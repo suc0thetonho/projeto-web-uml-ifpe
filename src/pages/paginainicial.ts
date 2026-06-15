@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Se não tiver token, expulsa para o login
     if (!token) {
-        window.location.href = '/frontend/pages/login.html';
+        window.location.href = '../../frontend/pages/login.html';
         return;
     }
 

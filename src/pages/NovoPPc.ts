@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('xppc_passo1_institucional', JSON.stringify(dadosPasso1));
         
         // Vai para a tela 2
-        window.location.href = '/frontend/pages/NovoPPcCurso.html';
+        window.location.href = '../../frontend/pages/NovoPPcCurso.html';
     });
 
     // Ação do botão "Salvar rascunho"

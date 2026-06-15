@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formCurso.addEventListener('submit', (evento) => {
         evento.preventDefault();
         sessionStorage.setItem('xppc_passo2_curso', JSON.stringify(coletarDadosCurso()));
-        window.location.href = '/frontend/pages/NovoPPcCurso2.html';
+        window.location.href = '../../frontend/pages/NovoPPcCurso2.html';
     });
     btnRascunho.addEventListener('click', () => {
         localStorage.setItem('xppc_rascunho_curso', JSON.stringify(coletarDadosCurso()));

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('xppc_token');
     // Se não tiver token, expulsa para o login
     if (!token) {
-        window.location.href = '/frontend/pages/login.html';
+        window.location.href = '../../frontend/pages/login.html';
         return;
     }
     // 2. Mapeamento dos elementos do DOM

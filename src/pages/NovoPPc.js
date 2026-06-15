@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Salva os dados do Passo 1 no sessionStorage
         sessionStorage.setItem('xppc_passo1_institucional', JSON.stringify(dadosPasso1));
         // Vai para a tela 2
-        window.location.href = '/frontend/pages/NovoPPcCurso.html';
+        window.location.href = '../../frontend/pages/NovoPPcCurso.html';
     });
     // Ação do botão "Salvar rascunho"
     btnRascunho.addEventListener('click', () => {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('xppc_raschunho_institucional', JSON.stringify(dadosPasso1));
         alert('Rascunho salvo com sucesso no seu navegador!');
     });
-    // Ação do botão "Cancelar" (Redirecionamento)
+    // Ação do botão "Cancelar" (Redirecionamento fixo e seguro)
     btnCancelar.addEventListener('click', () => {
         window.location.href = '../../frontend/pages/paginainicial.html';
     });
