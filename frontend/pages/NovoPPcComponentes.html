@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="../css/formulario.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+    .btn-remover {
+        background-color: #ff4d4d !important; /* !important força a aplicação */
+        color: white !important;
+        border: none !important;
+        padding: 6px 12px !important;
+        border-radius: 4px !important;
+        font-size: 12px !important;
+        cursor: pointer !important;
+    }
+
+    .btn-remover:hover {
+        background-color: #d32f2f !important;
+    }
+</style>
 </head>
 <body>
 
@@ -47,8 +62,8 @@
 
             <form id="form-componentes" class="formulario form-novo-ppc">
                 <div class="grade-formulario">
-                    <div class="grupo-campo"><label>Código *</label><input type="text" id="comp-codigo" placeholder="Digite o código" required></div>
-                    <div class="grupo-campo"><label>Nome *</label><input type="text" id="comp-nome" placeholder="Digite o nome" required></div>
+                    <div class="grupo-campo"><label>Código *</label><input type="text" id="comp-codigo" placeholder="Digite o código"></div>
+                    <div class="grupo-campo"><label>Nome *</label><input type="text" id="comp-nome" placeholder="Digite o nome"></div>
                     
                     <div class="linha-tres-campos">
                         <div class="grupo-campo"><label>Créd. Práticos *</label><input type="text" id="comp-credPrat"></div>
@@ -70,21 +85,27 @@
                 </div>
 
                 <button type="button" id="btn-adicionar" class="botao-proximo">Adicionar à Tabela</button>
-
-                <section class="tabela-componentes" style="margin-top: 20px;">
-                    <table id="tabela-componentes" style="width: 100%; border-collapse: collapse;">
-                        <thead>
-                            <tr style="background-color: #d4edda;">
-                                <th>Código</th><th>Nome</th><th>Tipo</th><th>Período</th><th>Créditos</th><th>Total Horas</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </section>
+<section class="tabela-componentes" style="margin-top: 20px; overflow-x: auto;">
+    <table id="tabela-componentes" style="width: 100%; border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr style="background-color: #d4edda; border-bottom: 2px solid #28a745;">
+                <th style="padding: 10px;">Código</th>
+                <th style="padding: 10px;">Nome</th>
+                <th style="padding: 10px;">Tipo</th>
+                <th style="padding: 10px;">Período</th>
+                <th style="padding: 10px;">Créditos (P/T/E)</th>
+                <th style="padding: 10px;">Horas (P/T/E)</th>
+                <th style="padding: 10px;">Pré Requisito/Correquisito</th>
+                <th style="padding: 10px;">Ações</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;"></tbody>
+    </table>
+</section>
 
                 <div class="acoes-formulario">
                     <button type="button" class="botao-cancelar" onclick="window.location.href='./paginainicial.html'">Cancelar</button>
-                    <button type="submit" class="botao-gerar">Gerar Documento</button>
+                    <button type="button" class="botao-gerar">Gerar Documento</button>
                 </div>
             </form>
         </main>
