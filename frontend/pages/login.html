@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/frontend/css/base.css">
+    <link rel="stylesheet" href="/frontend/css/login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="pagina">
+        <section class="card-esquerdo">
+            <h1 class="titulo-principal">LOGIN</h1>
+            <div class="aviso">
+                <a>ℹ Preencha os dados solicitados</a>
+            </div>
+            <div class="area-imagem">
+                <img src="/frontend/assets/tela01.png" alt="PPC" class="imagem-principal">
+            </div>
+            <div class="rodape-card">
+                <img src="/frontend/assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+                <a href="/frontend/pages/contatos.html" class="ajuda">precisa de ajuda?</a>
+            </div>
+        </section>
+
+        <section class="card-login">
+            <form class="formulario-login">
+                <h2>Email</h2>
+
+                <input type="email" name="email" placeholder="E-mail institucional">
+                <h2>Senha</h2>
+                <input type="password" name="senha" placeholder="Senha">
+
+                <a href="/frontend/pages/esqueceuSenha.html" class="link-senha">Esqueceu sua senha?</a>
+                <div class="aviso">
+                    ℹ Preencha seus dados de acesso
+                </div>
+
+                <button type="submit" class="botao">Continuar</button>
+    <script src="/frontend/js/auth.js" defer></script>
+                <a href="/index.html" class="botao-voltar">Voltar</a>
+            </form>
+        </section>
+        
+    </main>
+</body>
+</html>

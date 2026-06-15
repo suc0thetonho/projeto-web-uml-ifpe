@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/frontend/css/base.css">
+    <link rel="stylesheet" href="/frontend/css/cadastro.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="pagina">
+        <section class="card-esquerdo">
+            <h1 class="titulo">FICHA DE CADASTRO DE COORDENADOR</h1>
+            <div class="aviso">
+                <a>ℹ Preencha os dados solicitados</a>
+            </div>
+            <div class="area-imagem">
+                <img src="/frontend/assets/tela02.png" alt="PPC" class="imagem-principal">
+            </div>
+            <div class="rodape-card">
+                <img src="/frontend/assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+                <a href="#" class="ajuda">precisa de ajuda?</a>
+            </div>
+        </section>
+        <section class="card-formulario">
+
+            <form class="formulario">
+                <h2>DADOS PESSOAIS</h2>
+                <input type="text" name="nome" placeholder="Nome Completo">
+                <input type="text" name="cpf" placeholder="CPF">
+                <input type="date" name="data_nascimento">
+
+                <h2>CONTATO</h2>
+                <input type="email" name="email" placeholder="E-mail institucional">
+                <input type="text" name="telefone" placeholder="Telefone/celular">
+
+                <h2>DADOS INSTITUCIONAIS</h2>
+                <input type="text" name="matricula" placeholder="Matrícula">
+                <input type="text" name="curso_area" placeholder="Curso/Área de atuação">
+                <input type="text" name="departamento" placeholder="Departamento/Setor">
+                <input type="text" name="campus" placeholder="Campus">
+                <input type="text" name="cidade" placeholder="Cidade">
+                <input type="text" name="estado" placeholder="Estado (UF)" maxlength="2">
+
+                <button type="submit" class="botao">Continuar</button>
+                <a href="/index.html" class="botao-voltar">Voltar</a>
+            </form>
+        </section>
+    </main>
+    <script src="/frontend/js/cadastro.js" defer></script>
+</body>
+</html>

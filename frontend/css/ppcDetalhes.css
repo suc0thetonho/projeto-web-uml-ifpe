@@ -1,0 +1,170 @@
+.pagina-detalhes {
+    flex: 1;
+    background-color: #f7f7f7;
+    padding: 40px 60px;
+}
+
+/* ── Cabeçalho ── */
+
+.cabecalho-detalhes {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.cabecalho-detalhes h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.cabecalho-detalhes p {
+    font-size: 13px;
+    color: #555;
+}
+
+.badge-status {
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.badge-concluido { background: #d4edda; color: #168a2c; }
+.badge-andamento { background: #fff3cd; color: #856404; }
+.badge-rascunho  { background: #e2e3e5; color: #555; }
+
+/* ── Seções ── */
+
+.secao-info {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+}
+
+.secao-info h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0056c7;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8eef7;
+}
+
+/* ── Grade de campos ── */
+
+.grade-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 40px;
+}
+
+.grade-info.tres-colunas {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grade-info.coluna-inteira {
+    grid-column: 1 / -1;
+}
+
+.campo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.campo-info.inteiro {
+    grid-column: 1 / -1;
+}
+
+.campo-info .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.campo-info .valor {
+    font-size: 14px;
+    color: #111;
+    min-height: 20px;
+}
+
+.campo-info .valor:empty::after,
+.campo-info .valor.vazio::after {
+    content: '—';
+    color: #bbb;
+}
+
+/* ── Tabela de componentes ── */
+
+.secao-info table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.secao-info thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0056c7;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 8px 10px;
+    border-bottom: 2px solid #e8eef7;
+    white-space: nowrap;
+}
+
+.secao-info tbody td {
+    padding: 10px 10px;
+    color: #222;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+
+.secao-info tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sem-dados {
+    text-align: center;
+    color: #aaa;
+    padding: 20px !important;
+}
+
+/* ── Ações ── */
+
+.acoes-detalhes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.botao-voltar-detalhes {
+    padding: 10px 28px;
+    border: 2px solid #0056c7;
+    border-radius: 20px;
+    background: transparent;
+    color: #0056c7;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.botao-voltar-detalhes:hover {
+    background: #0056c7;
+    color: #fff;
+}

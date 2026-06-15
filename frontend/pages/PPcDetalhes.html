@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do PPC - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ppcDetalhes.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+        <div class="topo-direita">
+            <img src="../assets/Moon.png" alt="Tema escuro" class="icone-tema">
+            <button class="switch-tema" type="button">
+                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+            <img src="../assets/Sun.png" alt="Tema claro" class="icone-tema">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/NovoPPc.html?novo=1" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcCad.html" class="item-menu ativo">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/ajuda.html" class="item-menu">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="pagina-detalhes">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Início">
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <span>PPCs cadastrados</span>
+                <span>›</span>
+                <span id="breadcrumb-nome">Detalhes</span>
+            </div>
+
+            <div class="cabecalho-detalhes">
+                <div>
+                    <h2 id="titulo-ppc">Carregando...</h2>
+                    <p id="subtitulo-ppc"></p>
+                </div>
+                <span class="badge-status" id="badge-status"></span>
+            </div>
+
+            <!-- Dados do Campus -->
+            <section class="secao-info">
+                <h3>Dados do Campus</h3>
+                <div class="grade-info">
+                    <div class="campo-info inteiro">
+                        <span class="label">Nome do Campus</span>
+                        <span class="valor" id="nome_campus"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">CNPJ</span>
+                        <span class="valor" id="cnpj"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Cidade</span>
+                        <span class="valor" id="cidade_campus"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">CEP</span>
+                        <span class="valor" id="cep"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Bairro</span>
+                        <span class="valor" id="bairro"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Rua</span>
+                        <span class="valor" id="rua"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Número</span>
+                        <span class="valor" id="numero"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Telefone / Fax</span>
+                        <span class="valor" id="telefone_fax"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">E-mail de Contato</span>
+                        <span class="valor" id="email_contato"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Ato Legal de Criação</span>
+                        <span class="valor" id="ato_legal"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Sítio</span>
+                        <span class="valor" id="sitio"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dados do Curso (parte 1) -->
+            <section class="secao-info">
+                <h3>Dados do Curso</h3>
+                <div class="grade-info">
+                    <div class="campo-info">
+                        <span class="label">Tipo do Curso</span>
+                        <span class="valor" id="tipo_curso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Nome do Curso</span>
+                        <span class="valor" id="nome_curso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Eixo Tecnológico</span>
+                        <span class="valor" id="eixo_tecnologico"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Modalidade</span>
+                        <span class="valor" id="modalidade"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Formas de Oferta</span>
+                        <span class="valor" id="formas_oferta"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Titulação</span>
+                        <span class="valor" id="titulacao"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">CH Estágio Supervisionado (H/R)</span>
+                        <span class="valor" id="ch_estagio_hr"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Nº de Semanas Letivas</span>
+                        <span class="valor" id="num_semanas_letivas"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Atividades Complementares (H/R)</span>
+                        <span class="valor" id="atividades_complementares_hr"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Formas de Acesso</span>
+                        <span class="valor" id="formas_acesso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Período de Integralização Mínima</span>
+                        <span class="valor" id="periodo_integralizacao_min"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Período de Integralização Máxima</span>
+                        <span class="valor" id="periodo_integralizacao_max"></span>
+                    </div>
+                    <div class="campo-info inteiro">
+                        <span class="label">Pré-requisitos para Ingresso</span>
+                        <span class="valor" id="prerequisitos_ingresso"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dados do Curso (parte 2) -->
+            <section class="secao-info">
+                <h3>Informações Complementares do Curso</h3>
+                <div class="grade-info tres-colunas">
+                    <div class="campo-info">
+                        <span class="label">Regime</span>
+                        <span class="valor" id="regime"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Turnos</span>
+                        <span class="valor" id="turnos"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Duração do Curso</span>
+                        <span class="valor" id="duracao_curso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Nº Turmas por Turno</span>
+                        <span class="valor" id="num_turmas_por_turno"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Vagas por Turma</span>
+                        <span class="valor" id="vagas_por_turma"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Nº Vagas por Turno</span>
+                        <span class="valor" id="num_vagas_por_turno"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Vagas por Semestre</span>
+                        <span class="valor" id="vagas_por_semestre"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Conceito de Curso (CC)</span>
+                        <span class="valor" id="conceito_curso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Conceito Preliminar (CPC)</span>
+                        <span class="valor" id="conceito_preliminar_curso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Conceito Enade</span>
+                        <span class="valor" id="conceito_enade"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">IGC</span>
+                        <span class="valor" id="igc"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Situação do Curso</span>
+                        <span class="valor" id="situacao_curso"></span>
+                    </div>
+                    <div class="campo-info">
+                        <span class="label">Status do Curso</span>
+                        <span class="valor" id="status_curso"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Componentes Curriculares -->
+            <section class="secao-info">
+                <h3>Componentes Curriculares</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Período</th>
+                            <th>Cr. Práticas</th>
+                            <th>Cr. Teóricas</th>
+                            <th>Cr. Extensão</th>
+                            <th>H. Práticas</th>
+                            <th>H. Teóricas</th>
+                            <th>H. Extensão</th>
+                            <th>Pré-requisitos</th>
+                            <th>Correquisitos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-componentes">
+                        <tr><td colspan="12" class="sem-dados">Carregando...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="acoes-detalhes">
+                <a href="/frontend/pages/PPcCad.html" class="botao-voltar-detalhes">← Voltar</a>
+                <button id="btn-baixar-pdf" class="botao-voltar-detalhes" style="background:#0056c7;color:#fff;border-color:#0056c7">⬇ Baixar PDF</button>
+                <button id="btn-baixar-odt" class="botao-voltar-detalhes" style="background:#1a7a3c;color:#fff;border-color:#1a7a3c">⬇ Baixar ODT</button>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/tema.js"></script>
+    <script src="../js/ppcPdf.js"></script>
+    <script src="../js/ppcOdt.js"></script>
+    <script src="../js/ppcDetalhes.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Como montar a matriz curricular - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ajuda.css">
+    <link rel="stylesheet" href="../css/tutorial.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+        <div class="topo-direita">
+            <img src="../assets/Moon.png" alt="Tema escuro" class="icone-tema">
+            <button class="switch-tema" type="button">
+                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+            <img src="../assets/Sun.png" alt="Tema claro" class="icone-tema">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/NovoPPc.html?novo=1" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/ajuda.html" class="item-menu ativo">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo tutorial-page">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Início">
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <a href="/frontend/pages/ajuda.html">Ajuda</a>
+                <span>›</span>
+                <span>Como montar a matriz curricular</span>
+            </div>
+
+            <a href="/frontend/pages/ajuda.html" class="botao-voltar-tutorial">← Voltar para Ajuda</a>
+
+            <div class="cabecalho-tutorial">
+                <h2>Como montar a matriz curricular</h2>
+                <p>A matriz curricular é a última etapa da criação de um PPC. Nela você cadastra todos os componentes curriculares do curso, um a um.</p>
+            </div>
+
+            <div class="caixa-dica">
+                <strong>Pré-requisito:</strong> Para chegar nesta tela, é necessário ter concluído as etapas anteriores (Dados do Campus, Dados do Curso e Informações Complementares). Se ainda não fez isso, consulte o tutorial <a href="/frontend/pages/tutorial-novo-ppc.html" style="color:#0056c7">Como criar um Novo PPC</a>.
+            </div>
+
+            <div class="lista-passos">
+
+                <div class="passo">
+                    <div class="numero-passo">1</div>
+                    <div class="conteudo-passo">
+                        <h3>Acesse a etapa de Componentes Curriculares</h3>
+                        <p>Após completar a etapa 3 e clicar em <span class="destaque-acao">Próximo</span>, o sistema abrirá automaticamente a tela <strong>Novo PPC — Informações dos Componentes Curriculares</strong>. Se você estava editando um PPC em andamento, os componentes já cadastrados serão exibidos na tabela.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">2</div>
+                    <div class="conteudo-passo">
+                        <h3>Preencha os dados do componente curricular</h3>
+                        <p>O formulário no topo da tela possui os seguintes campos (os marcados com * são obrigatórios):</p>
+                        <ul>
+                            <li><strong>Código *</strong> — código de identificação da disciplina (ex.: INF001)</li>
+                            <li><strong>Nome do Componente Curricular *</strong> — nome da disciplina</li>
+                            <li><strong>Créditos de aulas práticas *</strong></li>
+                            <li><strong>Créditos de aulas teóricas *</strong></li>
+                            <li><strong>Créditos de Extensão *</strong></li>
+                            <li><strong>Total de Horas Práticas (H/R) *</strong></li>
+                            <li><strong>Total de Horas Teóricas (H/R) *</strong></li>
+                            <li><strong>Total de Horas de Extensão (H/R) *</strong></li>
+                            <li><strong>Tipo *</strong> — ex.: Obrigatória, Optativa</li>
+                            <li><strong>Período *</strong> — período/semestre em que a disciplina é ofertada</li>
+                            <li>Pré-requisitos (opcional)</li>
+                            <li>Correquisitos (opcional)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">3</div>
+                    <div class="conteudo-passo">
+                        <h3>Clique em "+ Adicionar componente"</h3>
+                        <p>Após preencher os campos, clique no botão <span class="destaque-acao">+ Adicionar componente</span>. O sistema verificará que todos os campos obrigatórios foram preenchidos e adicionará o componente à tabela de componentes curriculares abaixo do formulário.</p>
+                        <p style="margin-top: 8px;">Os campos do formulário serão limpos automaticamente, pronto para o próximo cadastro.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">4</div>
+                    <div class="conteudo-passo">
+                        <h3>Repita para cada disciplina da grade</h3>
+                        <p>Repita os passos 2 e 3 para cada componente curricular do curso. Você pode adicionar quantos componentes forem necessários. A tabela exibirá todos os componentes já cadastrados, organizados por período.</p>
+                        <p style="margin-top: 8px;"><span class="destaque-aviso">Atenção:</span> não há botão "Salvar rascunho" nesta etapa. Os componentes são salvos automaticamente no banco de dados ao clicar em <strong>+ Adicionar componente</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">5</div>
+                    <div class="conteudo-passo">
+                        <h3>Revise a tabela de componentes</h3>
+                        <p>Antes de finalizar, confira a tabela de componentes curriculares. Verifique se todos os períodos estão cobertos, se os códigos estão corretos e se as cargas horárias estão de acordo com o projeto pedagógico.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">6</div>
+                    <div class="conteudo-passo">
+                        <h3>Clique em "Gerar Documento" para concluir</h3>
+                        <p>Quando toda a grade estiver cadastrada, clique em <span class="destaque-sucesso">Gerar Documento</span>. O sistema irá:</p>
+                        <ul>
+                            <li>Marcar o PPC com status <strong>concluído</strong></li>
+                            <li>Redirecionar para a tela de <strong>PPCs cadastrados</strong></li>
+                        </ul>
+                        <p style="margin-top: 8px;">A partir daí, você pode clicar no nome do PPC para ver todos os detalhes ou clicar em <span class="destaque-acao">⬇ PDF</span> para baixar o documento gerado.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="caixa-dica">
+                <strong>Tabela de componentes:</strong> os campos <strong>Pré-requisitos</strong> e <strong>Correquisitos</strong> são opcionais. Se uma disciplina não tiver pré ou correquisitos, deixe esses campos em branco.
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/tema.js"></script>
+</body>
+</html>

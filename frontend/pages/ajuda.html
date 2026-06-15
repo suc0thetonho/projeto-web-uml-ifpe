@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda e tutoriais</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ajuda.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+
+        <div class="topo-direita">
+            <img src="../assets/Moon.png" alt="Tema escuro" class="icone-tema">
+
+            <button class="switch-tema" type="button">
+                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+
+            <img src="../assets/Sun.png" alt="Tema claro" class="icone-tema">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/NovoPPc.html?novo=1" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPCCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/ajuda.html" class="item-menu ativo">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo ajuda-page">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Início">
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <span>Ajuda</span>
+            </div>
+
+            <section class="cabecalho-ajuda">
+                <h2>Ajuda e tutoriais</h2>
+                <p>
+                    Orientações rápidas para apoiar o preenchimento e a geração automatizada dos PPCs.
+                </p>
+            </section>
+
+            <section class="cards-tutoriais">
+
+                <article class="card-tutorial">
+                    <img src="../assets/graduation-cap.png" alt="Tutorial" class="icone-card">
+                    <h3>Como criar um<br>Novo PPC</h3>
+                    <a href="/frontend/pages/tutorial-novo-ppc.html">Ver tutorial →</a>
+                </article>
+
+                <article class="card-tutorial">
+                    <img src="../assets/check.png" alt="Tutorial" class="icone-card">
+                    <h3>Como montar a<br>matriz curricular</h3>
+                    <a href="/frontend/pages/tutorial-matriz-curricular.html">Ver tutorial →</a>
+                </article>
+
+                <article class="card-tutorial">
+                    <img src="../assets/graduation-cap.png" alt="Tutorial" class="icone-card">
+                    <h3>Como acessar um<br>PPC em andamento</h3>
+                    <a href="/frontend/pages/tutorial-ppc-andamento.html">Ver tutorial →</a>
+                </article>
+
+            </section>
+
+            <section class="perguntas">
+                <h3>Perguntas frequentes</h3>
+
+                <div id="listaPerguntas">
+                    <!-- As perguntas serão carregadas pelo JavaScript -->
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/tema.js"></script>
+</body>
+</html>

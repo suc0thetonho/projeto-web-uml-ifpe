@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Como criar um Novo PPC - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ajuda.css">
+    <link rel="stylesheet" href="../css/tutorial.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+        <div class="topo-direita">
+            <img src="../assets/Moon.png" alt="Tema escuro" class="icone-tema">
+            <button class="switch-tema" type="button">
+                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+            <img src="../assets/Sun.png" alt="Tema claro" class="icone-tema">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/NovoPPc.html?novo=1" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/ajuda.html" class="item-menu ativo">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo tutorial-page">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Início">
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <a href="/frontend/pages/ajuda.html">Ajuda</a>
+                <span>›</span>
+                <span>Como criar um Novo PPC</span>
+            </div>
+
+            <a href="/frontend/pages/ajuda.html" class="botao-voltar-tutorial">← Voltar para Ajuda</a>
+
+            <div class="cabecalho-tutorial">
+                <h2>Como criar um Novo PPC</h2>
+                <p>Siga os passos abaixo para preencher e gerar um novo Projeto Pedagógico de Curso no sistema.</p>
+            </div>
+
+            <!-- Resumo das etapas -->
+            <div class="resumo-etapas">
+                <div class="etapa-pill"><span class="num">1</span> Dados do Campus</div>
+                <span class="etapa-seta">→</span>
+                <div class="etapa-pill"><span class="num">2</span> Dados do Curso</div>
+                <span class="etapa-seta">→</span>
+                <div class="etapa-pill"><span class="num">3</span> Informações Complementares</div>
+                <span class="etapa-seta">→</span>
+                <div class="etapa-pill"><span class="num">4</span> Matriz Curricular</div>
+            </div>
+
+            <div class="caixa-dica">
+                <strong>Dica:</strong> Campos marcados com <strong>*</strong> são obrigatórios em cada etapa. Você não conseguirá avançar sem preenchê-los. A qualquer momento a partir da etapa 2, você pode salvar o progresso como rascunho clicando em <strong>Salvar rascunho</strong>.
+            </div>
+
+            <div class="lista-passos">
+
+                <div class="passo">
+                    <div class="numero-passo">1</div>
+                    <div class="conteudo-passo">
+                        <h3>Acesse "Novo PPC" no menu lateral</h3>
+                        <p>No menu à esquerda, clique em <span class="destaque-acao">Novo PPC</span>. O sistema abrirá o formulário de criação, sempre começando com um formulário em branco.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">2</div>
+                    <div class="conteudo-passo">
+                        <h3>Etapa 1 — Dados do Campus</h3>
+                        <p>Preencha as informações do campus onde o curso será ofertado. Todos os campos desta etapa são obrigatórios:</p>
+                        <ul>
+                            <li>Nome do Campus, CNPJ, Cidade, CEP, Bairro</li>
+                            <li>Rua e Número do endereço</li>
+                            <li>Telefone/Fax, E-mail de contato</li>
+                            <li>Ato Legal de Criação e Sítio (site)</li>
+                        </ul>
+                        <p style="margin-top: 8px;">Ao terminar, clique em <span class="destaque-acao">Próximo</span>. O sistema verificará se todos os campos estão preenchidos antes de avançar.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">3</div>
+                    <div class="conteudo-passo">
+                        <h3>Etapa 2 — Dados do Curso</h3>
+                        <p>Informe os dados principais do curso. O campo <strong>Nome do Curso *</strong> é obrigatório também para salvar rascunho. Preencha:</p>
+                        <ul>
+                            <li>Tipo do Curso, Nome do Curso, Eixo Tecnológico</li>
+                            <li>Modalidade, Formas de Oferta, Titulação</li>
+                            <li>Cargas horárias (estágio, atividades complementares)</li>
+                            <li>Nº de semanas letivas, Formas de Acesso</li>
+                            <li>Períodos de Integralização mínima e máxima</li>
+                            <li>Pré-requisitos para Ingresso</li>
+                        </ul>
+                        <p style="margin-top: 8px;">Para gravar o progresso sem finalizar, clique em <span class="destaque-aviso">Salvar rascunho</span>. O PPC ficará disponível em <strong>PPCs em andamento</strong>. Para continuar, clique em <span class="destaque-acao">Próximo</span>.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">4</div>
+                    <div class="conteudo-passo">
+                        <h3>Etapa 3 — Informações Complementares do Curso</h3>
+                        <p>Complete com dados administrativos e de avaliação do curso:</p>
+                        <ul>
+                            <li>Regime, Turnos, Duração do Curso</li>
+                            <li>Nº de turmas por turno, Vagas por turma e por turno</li>
+                            <li>Vagas por semestre</li>
+                            <li>Conceito de Curso (CC), Conceito Preliminar (CPC)</li>
+                            <li>Conceito Enade, IGC, Situação e Status do Curso</li>
+                        </ul>
+                        <p style="margin-top: 8px;">Clique em <span class="destaque-aviso">Salvar rascunho</span> para gravar ou em <span class="destaque-acao">Próximo</span> para avançar à última etapa.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">5</div>
+                    <div class="conteudo-passo">
+                        <h3>Etapa 4 — Matriz Curricular</h3>
+                        <p>Adicione os componentes curriculares do curso um a um. Para cada componente, preencha os campos e clique em <span class="destaque-acao">+ Adicionar componente</span>. O componente aparecerá na tabela abaixo do formulário.</p>
+                        <p style="margin-top: 8px;">Repita o processo para todos os componentes necessários. Quando a grade estiver completa, clique em <span class="destaque-sucesso">Gerar Documento</span>.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">6</div>
+                    <div class="conteudo-passo">
+                        <h3>PPC gerado — disponível em PPCs cadastrados</h3>
+                        <p>Após clicar em <span class="destaque-sucesso">Gerar Documento</span>, o PPC recebe o status <strong>concluído</strong> e é redirecionado para a tela de <strong>PPCs cadastrados</strong>. A partir dali você pode visualizar os detalhes ou baixar o documento em PDF.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="caixa-dica">
+                <strong>Lembrete:</strong> Se você precisar pausar o preenchimento, use <strong>Salvar rascunho</strong> (disponível a partir da etapa 2). O PPC ficará salvo em <strong>PPCs em andamento</strong> e você poderá retomar de onde parou a qualquer momento.
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/tema.js"></script>
+</body>
+</html>

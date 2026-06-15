@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo PPC- Curso - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/Dados_curso.css">
+    <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- TOPO -->
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+
+        <div class="topo-direita">
+            <img src="../assets/Moon.png" alt="Modo escuro" class="icone-tema">
+
+            <button class="switch-tema" type="button">
+                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+
+            <img src="../assets/Sun.png" alt="Modo claro" class="icone-tema">
+        </div>
+    </header>
+
+    <!-- ÁREA GERAL -->
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/NovoPPc.html?novo=1" class="item-menu ativo">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/ajuda.html" class="item-menu">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo-novo-ppc">
+
+            <!-- CAMINHO -->
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Página inicial">
+                <span>›</span>
+                <span>Página Inicial</span>
+                <span>›</span>
+                <span>Novo PPC</span>
+                <span>›</span>
+                <span>Novo PPC - Curso</span>
+            </div>
+
+            <!-- TÍTULO -->
+            <section class="cabecalho-novo-ppc">
+                <h2>Novo PPC - Dados do curso</h2>
+                <p>
+                   Preencha as informações abaixo para da inicio a o processo de criação de um novo PPC.
+                </p>
+            </section>
+
+            <form class="formulario form-novo-ppc" id="form-curso1">
+
+                <div class="grade-formulario">
+
+                    <div class="grupo-campo">
+                        <label>Tipo do curso <span class="obrigatorio">*</span></label>
+                        <select name="tipo_curso">
+                            <option value="">Selecione o tipo do curso</option>
+                            <option value="Bacharelado">Bacharelado</option>
+                            <option value="Superior de tecnologia">Superior de tecnologia</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Nome do Curso <span class="obrigatorio">*</span></label>
+                        <input type="text" name="nome_curso" placeholder="Informe o nome do curso">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Eixo tecnológico <span class="obrigatorio">*</span></label>
+                        <input type="text" name="eixo_tecnologico" placeholder="Informe o eixo tecnológico do curso">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Modalidade <span class="obrigatorio">*</span></label>
+                        <select name="modalidade">
+                            <option value="">Selecione a modalidade</option>
+                            <option value="Presencial">Presencial</option>
+                            <option value="Semipresencial">Semipresencial</option>
+                            <option value="Educação à distância">Educação à distância</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Formas de Ofertas <span class="obrigatorio">*</span></label>
+                        <input type="text" name="formas_oferta" placeholder="Informe as formas de ofertas do curso">
+                    </div>
+                    <div class="grupo-campo">
+                        <label>Titulação <span class="obrigatorio">*</span></label>
+                        <input type="text" name="titulacao" placeholder="Informe a titulação do curso">
+                    </div>
+
+                    <div class="linha-tres-campos">
+                        <div class="grupo-campo">
+                            <label>CH estágio supervisionado (H/R) <span class="obrigatorio">*</span></label>
+                            <input type="text" name="ch_estagio_hr" placeholder="H/R">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Número de semanas letivas <span class="obrigatorio">*</span></label>
+                            <input type="text" name="num_semanas_letivas" placeholder="Nº de semanas letivas">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Atividades Complementares (H/R) <span class="obrigatorio">*</span></label>
+                            <input type="text" name="atividades_complementares_hr" placeholder="H/R">
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo campo-inteiro">
+                        <label>Período de integralização mínima (semestre/ano) <span class="obrigatorio">*</span></label>
+                        <input type="text" name="periodo_integralizacao_min" placeholder="Informe o período de integralização mínima">
+                    </div>
+
+                    <div class="grupo-campo campo-inteiro">
+                        <label>Período de integralização máxima (semestre/ano) <span class="obrigatorio">*</span></label>
+                        <input type="text" name="periodo_integralizacao_max" placeholder="Informe o período de integralização máxima">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Formas de acesso<span class="obrigatorio">*</span></label>
+                        <input type="text" name="formas_acesso" placeholder="Informe as formas de acesso do curso">
+                    </div>
+                    <div class="grupo-campo">
+                        <label>Pré-requisitos para ingresso<span class="obrigatorio">*</span></label>
+                        <input type="text" name="prerequisitos_ingresso" placeholder="Informe os pré-requisitos para ingresso">
+                    </div>
+
+
+                </div>
+
+                <div class="acoes-formulario">
+                    <button type="button" class="botao-cancelar">Cancelar</button>
+
+                    <div class="acoes-direita">
+                        <button type="button" class="botao-rascunho">Salvar rascunho</button>
+                        <button type="button" class="botao-proximo">Próximo</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/tema.js"></script>
+    <script src="../js/camposRegras.js"></script>
+    <script src="../js/novoPpc.js"></script>
+</body>
+</html>
