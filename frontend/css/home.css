@@ -1,0 +1,14 @@
+.card-direito {
+    width: 405px;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 17px;
+}
+
+.titulo-acesso {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}

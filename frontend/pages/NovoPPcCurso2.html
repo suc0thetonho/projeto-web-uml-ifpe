@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo PPC - Curso - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/Dados_curso.css">
+    <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">Página Inicial</a>
+                <a href="/frontend/pages/NovoPPc.html" class="item-menu ativo">Novo PPC</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-novo-ppc">
+            <section class="cabecalho-novo-ppc">
+                <h2>Novo PPC - Dados do curso</h2>
+                <p>Preencha as informações abaixo para dar início ao processo de criação.</p>
+            </section>
+
+            <form id="form-curso-info" class="formulario form-novo-ppc">
+                <div class="grade-formulario">
+                    <div class="grupo-campo"><label>Regime *</label><input type="text" placeholder="Informe o regime do curso" required></div>
+                    <div class="grupo-campo"><label>Turnos *</label><input type="text" placeholder="Informe quantos turnos o curso é oferecido" required></div>
+                    <div class="grupo-campo"><label>Nº de turmas por turno *</label><input type="text" placeholder="Informe o número de turmas por turno de oferta" required></div>
+                    <div class="grupo-campo"><label>Vagas por turma *</label><input type="text" placeholder="Informe o número de vagas por turma" required></div>
+                    <div class="grupo-campo"><label>Vagas por turno de oferta *</label><input type="text" placeholder="Informe o número de vagas por turno de oferta" required></div>
+                    <div class="grupo-campo"><label>Vagas por semestre *</label><input type="text" placeholder="Informe o número de vagas por semestre" required></div>
+                    <div class="grupo-campo campo-inteiro"><label>Duração do Curso *</label><input type="text" placeholder="Informe a duração do curso" required></div>
+                    <div class="grupo-campo"><label>Conceito de Curso (CC) *</label><input type="text" placeholder="Informe o conceito de curso (CC)" required></div>
+                    <div class="grupo-campo"><label>Conceito Preliminar (CPC) *</label><input type="text" placeholder="Informe o conceito preliminar de curso (CPC)" required></div>
+                    <div class="grupo-campo"><label>Conceito Enade *</label><input type="text" placeholder="Informe o conceito do Enade" required></div>
+                    <div class="grupo-campo"><label>Indice Geral de Cursos (IGC) *</label><input type="text" placeholder="Informe o índice geral de cursos (IGC)" required></div>
+                    <div class="grupo-campo"><label>Situação do Curso *</label><input type="text" placeholder="Informe a situação do curso" required></div>
+                    <div class="grupo-campo"><label>Status do Curso *</label><input type="text" placeholder="Informe o status do curso" required></div>
+                </div>
+
+                <div class="acoes-formulario">
+                    <button type="button" class="botao-cancelar" onclick="window.location.href='/frontend/pages/paginaInicial.html'">Cancelar</button>
+                    <div class="acoes-direita">
+                        <button type="button" id="btn-rascunho" class="botao-rascunho">Salvar rascunho</button>
+                        <button type="submit" class="botao-proximo">Próximo</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script type="module" src="../../src/pages/NovoPPcCurso2.js"></script>
+</body>
+</html>

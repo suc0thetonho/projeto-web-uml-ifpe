@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo PPC - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/Dados_curso.css">
+    <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+
+        <div class="topo-direita">
+            <img src="../assets/moon.png" alt="Modo escuro" class="icone-tema">
+
+            <button class="switch-tema" type="button">
+                <img src="../assets/vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+
+            <img src="../assets/sun.png" alt="Modo claro" class="icone-tema">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/NovoPPc.html" class="item-menu ativo">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/ajuda.html" class="item-menu">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-novo-ppc">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Página inicial">
+                <span>›</span>
+                <span>Página Inicial</span>
+                <span>›</span>
+                <span>Novo PPC</span>
+            </div>
+
+            <section class="cabecalho-novo-ppc">
+                <h2>Novo PPC - Dados Institucionais</h2>
+                <p>
+                   Preencha as informações abaixo para dar início ao processo de criação de um novo PPC.
+                </p>
+            </section>
+
+            <form id="form-novo-ppc" class="formulario form-novo-ppc">
+
+                <div class="grade-formulario">
+
+                    <div class="grupo-campo campo-inteiro">
+                        <label>Nome do Campus <span class="obrigatorio">*</span></label>
+                        <input type="text" id="nomeCampus" placeholder="Informe o nome do campus" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>CNPJ <span class="obrigatorio">*</span></label>
+                        <input type="text" id="cnpj" placeholder="Informe o CNPJ do campus" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Cidade <span class="obrigatorio">*</span></label>
+                        <input type="text" id="cidade" placeholder="Informe a cidade do campus" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>CEP <span class="obrigatorio">*</span></label>
+                        <input type="text" id="cep" placeholder="Informe o CEP do campus" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Bairro <span class="obrigatorio">*</span></label>
+                        <input type="text" id="bairro" placeholder="Informe o bairro do campus" required>
+                    </div>
+
+                    <div class="linha-rua-numero">
+                        <div class="grupo-campo">
+                            <label>Rua <span class="obrigatorio">*</span></label>
+                            <input type="text" id="rua" placeholder="Informe a rua do campus" required>
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Número <span class="obrigatorio">*</span></label>
+                            <input type="text" id="numero" placeholder="Informe o número do campus" required>
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Telefone/Fax <span class="obrigatorio">*</span></label>
+                        <input type="text" id="telefone" placeholder="Informe o telefone/fax do campus" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>E-mail de contato <span class="obrigatorio">*</span></label>
+                        <input type="email" id="email" placeholder="Informe o e-mail de contato do campus" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Ato Legal de Criação <span class="obrigatorio">*</span></label>
+                        <input type="text" id="atoLegal" placeholder="Informe o ato legal de criação do curso" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Sítio <span class="obrigatorio">*</span></label>
+                        <input type="text" id="sitio" placeholder="Informe o site da instituição" required>
+                    </div>
+
+                </div>
+
+                <div class="acoes-formulario">
+                    <button type="button" id="btn-cancelar" class="botao-cancelar" ">Cancelar</button>
+
+                    <div class="acoes-direita">
+                        <button type="button" id="btn-rascunho" class="botao-rascunho">Salvar rascunho</button>
+                        <button type="submit" class="botao-proximo">Próximo</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </main>
+    </div>
+
+    <script type="module" src="../../src/pages/NovoPPc.js"></script>
+</body>
+</html>

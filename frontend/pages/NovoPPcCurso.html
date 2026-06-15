@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo PPC - Curso - xPPC</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/Dados_curso.css">
+    <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">Página Inicial</a>
+                <a href="/frontend/pages/NovoPPc.html" class="item-menu ativo">Novo PPC</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-novo-ppc">
+            <section class="cabecalho-novo-ppc">
+                <h2>Novo PPC - Dados do curso</h2>
+            </section>
+
+            <form id="form-curso" class="formulario form-novo-ppc">
+                <div class="grade-formulario">
+                    <div class="grupo-campo"><label>Tipo do curso *</label><input type="text" id="tipoCurso" required></div>
+                    <div class="grupo-campo"><label>Nome do Curso *</label><input type="text" id="nomeCurso" required></div>
+                    <div class="grupo-campo"><label>Eixo tecnológico *</label><input type="text" id="eixoTecnologico" required></div>
+                    <div class="grupo-campo"><label>Modalidade *</label><input type="text" id="modalidade" required></div>
+                    <div class="grupo-campo"><label>Formas de Oferta *</label><input type="text" id="formasOferta" required></div>
+                    <div class="grupo-campo"><label>Titulação *</label><input type="text" id="titulacao" required></div>
+                    
+                    <div class="linha-tres-campos">
+                        <div class="grupo-campo"><label>CH estágio (H/R) *</label><input type="text" id="chEstagio" required></div>
+                        <div class="grupo-campo"><label>Nº semanas letivas *</label><input type="text" id="numSemanas" required></div>
+                        <div class="grupo-campo"><label>Ativ. Complementares (H/R) *</label><input type="text" id="chAtividades" required></div>
+                    </div>
+
+                    <div class="grupo-campo campo-inteiro"><label>Período integralização mínima *</label><input type="text" id="periodoMin" required></div>
+                    <div class="grupo-campo campo-inteiro"><label>Período integralização máxima *</label><input type="text" id="periodoMax" required></div>
+                    <div class="grupo-campo"><label>Formas de acesso *</label><input type="text" id="formasAcesso" required></div>
+                    <div class="grupo-campo"><label>Pré-requisitos *</label><input type="text" id="preRequisitos" required></div>
+                </div>
+
+                <div class="acoes-formulario">
+                    <button type="button" class="botao-cancelar" onclick="window.location.href='/frontend/pages/paginaInicial.html'">Cancelar</button>
+                    <div class="acoes-direita">
+                        <button type="button" id="btn-rascunho" class="botao-rascunho">Salvar rascunho</button>
+                        <button type="submit" class="botao-proximo">Próximo</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+    <script type="module" src="../../src/pages/NovoPPcCurso.js"></script>
+</body>
+</html>

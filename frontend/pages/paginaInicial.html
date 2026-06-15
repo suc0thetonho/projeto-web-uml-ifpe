@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página inicial - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ajuda.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+
+        <div class="topo-direita">
+            <img src="../assets/moon.png" alt="Modo escuro" class="icone-tema">
+
+            <button class="switch-tema" type="button">
+                <img src="../assets/vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+
+            <img src="../assets/sun.png" alt="Modo claro" class="icone-tema">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu ativo">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/NovoPPc.html" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/ajuda.html" class="item-menu">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Página inicial">
+                <span>›</span>
+                <span>Página inicial</span>
+            </div>
+
+            <section class="cabecalho-conteudo">
+                <h2>Página inicial</h2>
+                <p>
+                    Bem-vindo ao Sistema de Criação e Automatização de PPCs.
+                    Aqui você pode acompanhar PPCs, pendências e iniciar a criação
+                    de um novo Projeto Pedagógico de Curso.
+                </p>
+            </section>
+
+            <section class="cards-resumo">
+                <div class="card-resumo">
+                    <img src="../assets/graduation-cap.png" alt="PPCs em andamento">
+                    <p>PPCs em<br>andamento</p>
+                    <span class="texto-laranja" id="contador-andamento">Carregando...</span>
+                </div>
+
+                <div class="card-resumo">
+                    <img src="../assets/check.png" alt="PPCs concluídos">
+                    <p>PPCs concluídos</p>
+                    <span class="texto-verde" id="contador-concluidos">Carregando...</span>
+                </div>
+            </section>
+
+            <section class="area-acoes">
+
+                <div class="card-criar">
+                    <div class="card-criar-topo">
+                        <div>
+                            <h3>Criar novo PPCs</h3>
+                            <p>
+                                Preencha os campos e etapas: dados do curso,
+                                estrutura curricular, textos do PPC e revisão final.
+                            </p>
+                        </div>
+                        <a href="/frontend/pages/NovoPPc.html" class="botao-novo">+ novo PPC</a>
+                    </div>
+
+                    <div class="etapas">
+                        <div class="etapa">
+                            <span>1.</span>
+                            <p>Dados do curso</p>
+                        </div>
+
+                        <div class="etapa">
+                            <span>2.</span>
+                            <p>Matriz curricular</p>
+                        </div>
+
+                        <div class="etapa">
+                            <span>3.</span>
+                            <p>Textos do PPC</p>
+                        </div>
+
+                        <div class="etapa">
+                            <span>4.</span>
+                            <p>Gerar documento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-automacao">
+                    <h3>Automação do PPC</h3>
+                    <p>
+                        O sistema reduz o preenchimento manual,
+                        calcula cargas horárias, aponta pendências
+                        e ajuda a gerar textos acadêmicos do PPC.
+                    </p>
+                </div>
+
+            </section>
+
+            <section class="ultimas-atividades">
+                <h3>Últimas atividades</h3>
+                <p id="texto-atividades">
+                    Buscando histórico de atividades...
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="../../src/pages/paginainicial.js"></script>
+</body>
+</html>
