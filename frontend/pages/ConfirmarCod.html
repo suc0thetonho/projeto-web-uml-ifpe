@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar Codigo</title>
+    <title>Confirmar Código</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/ConfEmail.css">
 </head>
@@ -16,25 +16,28 @@
         </section>
     
         <section class="card-formulario">
-            <form class="formulario">
+            <form id="form-confirmar-codigo" class="formulario">
                 <h2 class="titulo-acesso">Confirmar Código</h2>
-                <p class="descricao">Email</p>
-                <input type="email" placeholder="E-mail Cadastrado">
+                
+                
                 <p class="descricao">Código</p>
-                <input type="text" placeholder="Código de Confirmação">
+                <input type="text" id="input-codigo" placeholder="Digite o código" required>
+                
                 <div class="aviso">
-                    ℹ Email para receber código de acesso
+                    ℹ Verifique sua caixa de entrada
                 </div>
-                <a href="../pages/esqueceuSenha.html" class="botao-editar ">Editar e-mail</a>
-                <a href="../pages/login.html" class="verificar-codigo">Verificar código</a>
+
+                <a href="../pages/esqueceuSenha.html" class="botao-editar">Editar e-mail</a>
+                
+                <button type="button" id="btn-verificar" class="verificar-codigo">Verificar código</button>
             </form>
+            
             <div class="rodape-card">
                 <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
-                <a href="#" class="ajuda">precisa de ajuda?</a>
+                <a href="./contatos.html" class="ajuda">precisa de ajuda?</a>
             </div>
-            
         </section>
     </main>
-    
+    <script type="module" src="../../src/pages/confirmarCod.js"></script>
 </body>
 </html>

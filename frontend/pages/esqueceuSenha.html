@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,23 +16,26 @@
         </section>
     
         <section class="card-formulario">
-            <form class="formulario">
+            <form id="form-esqueceu-senha" class="formulario">
                 <a href="../pages/login.html" class="voltar-login">← Voltar para o login</a>
                 <h2 class="titulo-acesso">Esqueceu a Senha</h2>
                 <p class="descricao">Digite seu e-mail cadastrado.</p>
-                <input type="email" placeholder="E-mail Cadastrado">
+                
+                <input type="email" id="input-email" placeholder="E-mail Cadastrado" required>
+                
                 <div class="aviso">
                     ℹ Email para receber código de acesso
                 </div>
-                <a href="../pages/ConfirmarCod.html" class="botao">Continuar</a>
+                
+                <button type="button" id="btn-continuar" class="botao">Continuar</button>
             </form>
+            
             <div class="rodape-card">
                 <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
                 <a href="../pages/contatos.html" class="ajuda">precisa de ajuda?</a>
             </div>
-            
         </section>
     </main>
-    
+    <script type="module" src="../../src/pages/esqueceuSenha.js"></script>
 </body>
 </html>
