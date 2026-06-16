@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erro codigo</title>
+    <title>Código Inválido</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/ConfEmail.css">
 </head>
@@ -11,30 +11,33 @@
     <main class="pagina">
         <section class="card-esquerdo"> 
             <div class="area-imagem">
-                <img src="../assets/pana.png" alt="Confirmar Email" class="imagem tela-senha">
+                <img src="../assets/pana.png" alt="Erro" class="imagem tela-senha">
             </div>
         </section>
     
         <section class="card-formulario">
-            <form class="formulario">
-                <h2 class="titulo-acesso">Ops tente novamente</h2>
-                <p class="descricao">Email</p>
-                <input type="email" placeholder="E-mail Cadastrado">
+            <form id="form-erro-codigo" class="formulario">
+                <h2 class="titulo-acesso" style="color: #d9534f;">Ops, tente novamente</h2>
+                
+                
                 <p class="descricao">Código</p>
-                <input type="text" placeholder="Código de Confirmação">
-                <div class="aviso">
-                    ℹ Email para receber código de acesso
+                <input type="text" id="input-codigo-erro" placeholder="Digite o novo código" required>
+                
+                <div class="aviso" style="color: #d9534f;">
+                    ⚠ Código incorreto ou expirado.
                 </div>
-                <a href="../pages/esqueceuSenha.html" class="botao-editar ">Editar e-mail</a>
-                <a href="../pages/login.html" class="verificar-codigo">Verificar código</a>
+
+                <a href="../pages/esqueceuSenha.html" class="botao-editar">Editar e-mail</a>
+                
+                <button type="button" id="btn-verificar-erro" class="verificar-codigo">Verificar código</button>
             </form>
+            
             <div class="rodape-card">
                 <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
-                <a href="#" class="ajuda">precisa de ajuda?</a>
+                <a href="./contatos.html" class="ajuda">precisa de ajuda?</a>
             </div>
-            
         </section>
     </main>
-    
+    <script type="module" src="../../src/pages/codInvalid.js"></script>
 </body>
 </html>
