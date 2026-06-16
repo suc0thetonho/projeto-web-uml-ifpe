@@ -39,200 +39,116 @@
     </div>
 
 <script>
-    const ppc = JSON.parse(sessionStorage.getItem('xppc_ppc_final'));
-    const container = document.getElementById('conteudo-ppc');
-
-    // Função que gera um arquivo Word real (que o LibreOffice abre perfeitamente)
-    function baixarDoc() {
-        const conteudo = document.getElementById('conteudo-ppc').innerHTML;
-        const htmlFinal = `
-            <!DOCTYPE html>
-            <html>
-                <head><meta charset="UTF-8"></head>
-                <body>${conteudo}</body>
-            </html>`;
-        
-        const blob = htmlDocx.asBlob(htmlFinal);
-        saveAs(blob, 'PPC_Curso.docx');
-    }
-
-    container.innerHTML = `
-           <section class="secao-documento">
-
-    <h2>1. Dados Institucionais</h2>
-
-    <div class="grid-dados">
-
-        <div class="bloco-infos">
-
-            <p><strong>Campus:</strong> ${ppc.institucional.nomeCampus}</p>
-
-            <p><strong>CNPJ:</strong> ${ppc.institucional.cnpj}</p>
-
-            <p><strong>Ato Legal de Criação:</strong> ${ppc.institucional.atoLegal}</p>
-
-            <p><strong>Sítio:</strong> ${ppc.institucional.sitio}</p>
-
-           
-
-       
-
-                <p><strong>E-mail:</strong> ${ppc.institucional.email}</p>
-
-                <p><strong>Telefone:</strong> ${ppc.institucional.telefone}</p>
-
-           
-
-                <p><strong>Endereço:</strong> ${ppc.institucional.rua}, Nº ${ppc.institucional.numero} - ${ppc.institucional.bairro}</p>
-
-                <p><strong>Cidade:</strong> ${ppc.institucional.cidade} | <strong>CEP:</strong> ${ppc.institucional.cep}</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-       <section class="secao-documento">
-
-    <h2>2. Dados do Curso</h2>
-
-    <div class="cards-container">
-
-        <div class="bloco-infos">
-
-            <p><strong>Nome:</strong> ${ppc.curso.nomeCurso}</p>
-
-            <p><strong>Tipo:</strong> ${ppc.curso.tipoCurso}</p>
-
-            <p><strong>Titulação:</strong> ${ppc.curso.titulacao}</p>
-
-            <p><strong>Eixo Tecnológico:</strong> ${ppc.curso.eixoTecnologico}</p>
-
-       
-
-            <p><strong>CH Estágio:</strong> ${ppc.curso.chEstagio}h</p>
-
-            <p><strong>CH Atividades:</strong> ${ppc.curso.chAtividades}h</p>
-
-            <p><strong>Período (Min/Max):</strong> ${ppc.curso.periodoMin} a ${ppc.curso.periodoMax}</p>
-
-            <p><strong>Semanas Letivas:</strong> ${ppc.curso.numSemanas}</p>
-
-       
-
-            <p><strong>Modalidade:</strong> ${ppc.curso.modalidade}</p>
-
-            <p><strong>Formas de Oferta:</strong> ${ppc.curso.formasOferta}</p>
-
-            <p><strong>Formas de Acesso:</strong> ${ppc.curso.formasAcesso}</p>
-
-            <p><strong>Pré-requisitos:</strong> ${ppc.curso.preRequisitos}</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-        <section class="secao-documento">
-
-    <h2>3. Detalhes sobre o Curso</h2>
-
-    <div class="cards-container">
-
-        <div class="bloco-infos">
-
-            <p><strong>Regime:</strong> ${ppc.infoDetalhada.regime || '---'}</p>
-
-            <p><strong>Turnos:</strong> ${ppc.infoDetalhada.turnos || '---'}</p>
-
-            <p><strong>Duração:</strong> ${ppc.infoDetalhada.duracaoCurso || '---'}</p>
-
-            <p><strong>Situação:</strong> ${ppc.infoDetalhada.situacaoCurso || '---'}</p>
-
-            <p><strong>Status:</strong> ${ppc.infoDetalhada.statusCurso || '---'}</p>
-
-       
-
-            <p><strong>Turmas/Turno:</strong> ${ppc.infoDetalhada.numTurmasPorTurno || 'Não definido'}</p>
-
-            <p><strong>Vagas por Turma:</strong> ${ppc.infoDetalhada.vagasPorTurma || '---'}</p>
-
-            <p><strong>Vagas por Turno:</strong> ${ppc.infoDetalhada.vagasPorTurno || '---'}</p>
-
-            <p><strong>Vagas por Semestre:</strong> ${ppc.infoDetalhada.vagasPorSemestre || '---'}</p>
-
-       
-
-            <p><strong>Conceito CC:</strong> ${ppc.infoDetalhada.conceitoCC || 'N/A'}</p>
-
-            <p><strong>Conceito CPC:</strong> ${ppc.infoDetalhada.conceitoCPC || 'N/A'}</p>
-
-            <p><strong>Conceito ENADE:</strong> ${ppc.infoDetalhada.conceitoEnade || 'N/A'}</p>
-
-            <p><strong>Índice IGC:</strong> ${ppc.infoDetalhada.indiceIGC || 'N/A'}</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-        <section>
-
-    <h2>4. Matriz Curricular Detalhada</h2>
-
-    <table class="tabela-matriz">
-
-        <thead>
-
-            <tr>
-
-                <th>Cód</th><th>Nome</th><th>Tipo</th><th>Período</th><th>Créditos (P/T/E)</th><th>Horas (P/T/E)</th><th>Pré Rquisito</th><th>Correquisito</th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            ${ppc.matrizCurricular.map(c => `
-
-                <tr>
-
-                    <td>${c.codigo}</td>
-
-                    <td>${c.nome}</td>
-
-                    <td>${c.tipo}</td>
-
-                    <td>${c.periodo}</td>
-
-                    <td>${c.credPrat}/${c.credTeor}/${c.credExt}</td>
-
-                    <td>${c.horasPrat}/${c.horasTeor}/${c.horasExt}</td>
-
-                    <td>${c.pre}</td>
-
-                    <td>${c.correq}</td>
-
-                </tr>
-
-            `).join('')}
-
-        </tbody>
-
-    </table>
-
-</section>
-    `;
+    document.addEventListener('DOMContentLoaded', () => {
+        const ppc = JSON.parse(sessionStorage.getItem('xppc_ppc_final'));
+        const container = document.getElementById('conteudo-ppc');
+
+        // Segurança: Se não houver dados, volta para a lista
+        if (!ppc) {
+            alert("Nenhum PPC selecionado para visualização.");
+            window.location.href = '../pages/PPcCad.html';
+            return;
+        }
+
+        // Função para exportar como Word (.docx) - funciona no LibreOffice e Word
+        window.baixarDoc = function() {
+            const conteudo = document.getElementById('conteudo-ppc').innerHTML;
+            const htmlFinal = `
+                <!DOCTYPE html>
+                <html>
+                    <head><meta charset="UTF-8"></head>
+                    <body>${conteudo}</body>
+                </html>`;
+            
+            const blob = htmlDocx.asBlob(htmlFinal);
+            saveAs(blob, 'PPC_Documento.docx');
+        };
+
+        // Renderização do conteúdo
+        container.innerHTML = `
+            <section class="secao-documento">
+                <h2>1. Dados Institucionais</h2>
+                <div class="grid-dados">
+                    <div class="bloco-infos">
+                        <p><strong>Campus:</strong> ${ppc.institucional.nomeCampus}</p>
+                        <p><strong>CNPJ:</strong> ${ppc.institucional.cnpj}</p>
+                        <p><strong>Ato Legal de Criação:</strong> ${ppc.institucional.atoLegal}</p>
+                        <p><strong>Sítio:</strong> ${ppc.institucional.sitio}</p>
+                        <p><strong>E-mail:</strong> ${ppc.institucional.email}</p>
+                        <p><strong>Telefone:</strong> ${ppc.institucional.telefone}</p>
+                        <p><strong>Endereço:</strong> ${ppc.institucional.rua}, Nº ${ppc.institucional.numero} - ${ppc.institucional.bairro}</p>
+                        <p><strong>Cidade:</strong> ${ppc.institucional.cidade} | <strong>CEP:</strong> ${ppc.institucional.cep}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="secao-documento">
+                <h2>2. Dados do Curso</h2>
+                <div class="cards-container">
+                    <div class="bloco-infos">
+                        <p><strong>Nome:</strong> ${ppc.curso.nomeCurso}</p>
+                        <p><strong>Tipo:</strong> ${ppc.curso.tipoCurso}</p>
+                        <p><strong>Titulação:</strong> ${ppc.curso.titulacao}</p>
+                        <p><strong>Eixo Tecnológico:</strong> ${ppc.curso.eixoTecnologico}</p>
+                        <p><strong>CH Estágio:</strong> ${ppc.curso.chEstagio}h</p>
+                        <p><strong>CH Atividades:</strong> ${ppc.curso.chAtividades}h</p>
+                        <p><strong>Período (Min/Max):</strong> ${ppc.curso.periodoMin} a ${ppc.curso.periodoMax}</p>
+                        <p><strong>Semanas Letivas:</strong> ${ppc.curso.numSemanas}</p>
+                        <p><strong>Modalidade:</strong> ${ppc.curso.modalidade}</p>
+                        <p><strong>Formas de Oferta:</strong> ${ppc.curso.formasOferta}</p>
+                        <p><strong>Formas de Acesso:</strong> ${ppc.curso.formasAcesso}</p>
+                        <p><strong>Pré-requisitos:</strong> ${ppc.curso.preRequisitos}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="secao-documento">
+                <h2>3. Detalhes sobre o Curso</h2>
+                <div class="cards-container">
+                    <div class="bloco-infos">
+                        <p><strong>Regime:</strong> ${ppc.infoDetalhada.regime || '---'}</p>
+                        <p><strong>Turnos:</strong> ${ppc.infoDetalhada.turnos || '---'}</p>
+                        <p><strong>Duração:</strong> ${ppc.infoDetalhada.duracaoCurso || '---'}</p>
+                        <p><strong>Situação:</strong> ${ppc.infoDetalhada.situacaoCurso || '---'}</p>
+                        <p><strong>Status:</strong> ${ppc.infoDetalhada.statusCurso || '---'}</p>
+                        <p><strong>Turmas/Turno:</strong> ${ppc.infoDetalhada.numTurmasPorTurno || 'Não definido'}</p>
+                        <p><strong>Vagas por Turma:</strong> ${ppc.infoDetalhada.vagasPorTurma || '---'}</p>
+                        <p><strong>Vagas por Turno:</strong> ${ppc.infoDetalhada.vagasPorTurno || '---'}</p>
+                        <p><strong>Vagas por Semestre:</strong> ${ppc.infoDetalhada.vagasPorSemestre || '---'}</p>
+                        <p><strong>Conceito CC:</strong> ${ppc.infoDetalhada.conceitoCC || 'N/A'}</p>
+                        <p><strong>Conceito CPC:</strong> ${ppc.infoDetalhada.conceitoCPC || 'N/A'}</p>
+                        <p><strong>Conceito ENADE:</strong> ${ppc.infoDetalhada.conceitoEnade || 'N/A'}</p>
+                        <p><strong>Índice IGC:</strong> ${ppc.infoDetalhada.indiceIGC || 'N/A'}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. Matriz Curricular Detalhada</h2>
+                <table class="tabela-matriz" border="1" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Cód</th><th>Nome</th><th>Tipo</th><th>Período</th><th>Créditos (P/T/E)</th><th>Horas (P/T/E)</th><th>Pré Requisito</th><th>Correquisito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${ppc.matrizCurricular.map(c => `
+                            <tr>
+                                <td>${c.codigo}</td>
+                                <td>${c.nome}</td>
+                                <td>${c.tipo}</td>
+                                <td>${c.periodo}</td>
+                                <td>${c.credPrat}/${c.credTeor}/${c.credExt}</td>
+                                <td>${c.horasPrat}/${c.horasTeor}/${c.horasExt}</td>
+                                <td>${c.pre}</td>
+                                <td>${c.correq}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </section>
+        `;
+    });
 </script>
 </body>
 </html>
