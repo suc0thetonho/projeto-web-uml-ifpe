@@ -1,0 +1,122 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ==========================================
+// 1. ENTIDADE: USUÁRIO / COORDENADOR
+// ==========================================
+model Usuario {
+  id                 Int      @id @default(autoincrement())
+  nome               String
+  cpf                String   @unique // VAL04: Evita cadastro duplicado
+  dataNascimento     DateTime
+  email              String   @unique // VAL02: Formato e unicidade
+  telefoneCelular    String
+  matricula          String   @unique
+  cursoAreaCoordena  String
+  departamentoSetor  String
+  campus             String
+  cidade             String
+  senha              String   // RNF07: Armazenada com Hash seguro no Back
+  codigoRecuperacao  String?  // RF07/RF08: Para fluxo de esqueci a senha
+  createdAt          DateTime @default(now())
+
+  // Relacionamento: Um usuário pode criar/gerenciar múltiplos PPCs
+  ppcs               Ppc[]
+
+  @@map("usuarios")
+}
+
+// ==========================================
+// 2. ENTIDADE: PROJETO PEDAGÓGICO DE CURSO (PPC)
+// ==========================================
+model Ppc {
+  id                   Int      @id @default(autoincrement())
+  status               String   @default("EM_ANDAMENTO") // RF32: 'EM_ANDAMENTO' ou 'CONCLUIDO'
+  createdAt            DateTime @default(now())
+  
+  // --- ETAPA 1: Dados do Curso / Campus (RF13) ---
+  campusNome           String
+  campusCidade         String
+  campusCnpj           String
+  campusCep            String
+  campusBairro         String
+  campusRua            String
+  campusNumero         String
+  campusTelefoneFax    String
+  campusEmail          String
+  campusAtoLegal       String
+  campusSite           String
+
+  // --- ETAPA 2: Informações Acadêmicas (RF14) ---
+  cursoTipo            String   // Ex: Bacharelado, Tecnólogo, Licenciatura
+  cursoNome            String   // Nome do documento/curso usado na busca (RF26)
+  cursoEixoTecnologico String
+  cursoModalidade      String   // Ex: Presencial, EaD
+  cursoOferta          String   
+  cursoTitulacao       String   
+  cursoEstagio         String   // Detalhes do estágio supervisionado
+  cursoSemanasLetivas  Int
+  cursoAtivComplem     Int      // Horas de atividades complementares
+  cursoIntegMinima     Int      // Integralização mínima
+  cursoIntegMaxima     Int      // Integralização máxima
+  cursoFormasAcesso    String   @db.Text
+  cursoPreRequisitos   String   @db.Text
+
+  // --- ETAPA 3: Oferta e Indicadores (RF15) ---
+  ofertaRegime         String   // Ex: Semestral / Anual
+  ofertaTurnos         String   
+  ofertaNumTurmas      Int
+  ofertaVagasTurma     Int
+  ofertaVagasTurno     Int
+  ofertaVagasSemestre  Int
+  ofertaDuracao        Int
+  // RN11 / VAL09: Indicadores aceitam String para permitir "Não se aplica"
+  indicadorCC          String   @default("Não se aplica")
+  indicadorCPC         String   @default("Não se aplica")
+  indicadorEnade       String   @default("Não se aplica")
+  indicadorIGC         String   @default("Não se aplica")
+  cursoSituacao        String
+  cursoStatus          String
+
+  // --- RELACIONAMENTOS ---
+  usuarioId            Int
+  usuario              Usuario  @relation(fields: [usuarioId], references: [id])
+  
+  // Um PPC possui muitos componentes curriculares (matriz)
+  componentes          ComponenteCurricular[]
+
+  @@map("ppcs")
+}
+
+// ==========================================
+// 3. ENTIDADE: COMPONENTE CURRICULAR (DISCIPLINA)
+// ==========================================
+model ComponenteCurricular {
+  id               Int      @id @default(autoincrement())
+  codigo           String   // RF23 / VAL12: Código único do componente DENTRO do PPC
+  nome             String
+  creditosPraticos Int
+  creditosTeoricos Int
+  creditosExtensao Int
+  horasPraticas    Int
+  horasTeoricas    Int
+  horasExtensao    Int
+  tipo             String   // Ex: Obrigatória / Eletiva
+  periodo          Int      // Qual período a disciplina pertence (1º, 2º...)
+  preRequisitos    String   @default("") // VAL13: Guardará os códigos das disciplinas
+  correquisitos    String   @default("")
+
+  // Relacionamento com o PPC pai
+  ppcId            Int
+  ppc              Ppc      @relation(fields: [ppcId], references: [id], onDelete: Cascade)
+
+  // Garante a regra RN14/VAL12: Código único de componente DENTRO do mesmo PPC
+  @@unique([codigo, ppcId])
+  @@map("componentes_curriculares")
+}

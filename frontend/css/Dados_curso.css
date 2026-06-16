@@ -1,0 +1,107 @@
+.conteudo-novo-ppc {
+    flex: 1;
+    padding: 45px 70px;
+    background-color: white;
+}
+
+.cabecalho-novo-ppc {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cabecalho-novo-ppc h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.cabecalho-novo-ppc p {
+    font-size: 15px;
+    color: #333;
+}
+
+.form-novo-ppc {
+    width: 750px;
+    margin: 0 auto;
+}
+
+.grade-formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 8px;
+}
+
+.campo-inteiro {
+    grid-column: span 2;
+}
+
+.campo-rua {
+    grid-column: span 1;
+}
+
+.linha-rua-numero {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    gap: 8px;
+    grid-column: span 2;
+}
+
+.linha-tres-campos {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.cabecalho-novo-ppc h1 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.tabela-componentes {
+    width: 100%;
+    height: 105px;
+    margin-top: 22px;
+    background-color: #d4f5d0;
+    overflow: hidden;
+}
+
+.tabela-componentes table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela-componentes thead {
+    background-color: #a7e4a1;
+}
+
+.tabela-componentes th {
+    font-size: 9px;
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    padding: 6px 4px;
+}
+
+.tabela-componentes td {
+    height: 65px;
+    background-color: #d4f5d0;
+}
+
+.botao-gerar {
+    width: 160px;
+    height: 35px;
+    border: none;
+    border-radius: 18px;
+    background-color: #369831;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botao-gerar:hover {
+    background-color: #247c24;
+}

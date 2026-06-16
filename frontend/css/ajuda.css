@@ -1,0 +1,106 @@
+.ajuda-page {
+    padding: 45px 70px;
+}
+
+/* Cabeçalho */
+
+.cabecalho-ajuda {
+    text-align: center;
+    margin-bottom: 85px;
+}
+
+.cabecalho-ajuda h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.cabecalho-ajuda p {
+    font-size: 15px;
+    color: #333;
+}
+
+/* Cards de tutoriais */
+
+.cards-tutoriais {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 45px;
+}
+
+.card-tutorial {
+    width: 175px;
+    height: 155px;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.icone-card {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.card-tutorial h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #0056c7;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.card-tutorial a {
+    font-size: 13px;
+    color: #168a2c;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.card-tutorial a:hover {
+    text-decoration: underline;
+}
+
+/* Perguntas frequentes */
+
+.perguntas {
+    width: 830px;
+    min-height: 165px;
+
+    margin: 0 auto;
+
+    background-color: #fff;
+    padding: 22px 24px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.perguntas h3 {
+    font-size: 20px;
+    color: #0056c7;
+    margin-bottom: 18px;
+}
+
+.perguntas a {
+    display: block;
+
+    font-size: 14px;
+    color: #0056c7;
+    font-style: italic;
+    text-decoration: none;
+
+    margin-bottom: 10px;
+}
+
+.perguntas a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo PPC- Curso - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/Dados_curso.css">
+    <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- TOPO -->
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+
+        <div class="topo-direita">
+            <img src="../assets/moon.png" alt="Modo escuro" class="icone-tema">
+
+            <button class="switch-tema" type="button">
+                <img src="../assets/vector.png" alt="Alternar tema" class="switch-fundo">
+                <span class="switch-bolinha"></span>
+            </button>
+
+            <img src="../assets/sun.png" alt="Modo claro" class="icone-tema">
+        </div>
+    </header>
+
+    <!-- ÁREA GERAL -->
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu ativo">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/NovoPPc.html" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/ajuda.html" class="item-menu">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo conteudo-novo-ppc">
+
+            <div class="breadcrumb">
+                <img src="../assets/button.png" alt="Início">
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <span>Novo PPC</span>
+                <span>Novo PPC - Curso</span>
+                <span>›</span>
+                <span>Novo PPC - Curso - informações</span>
+                <span>›</span>
+                <span>Novo PPC - Componentes Curriculares</span>
+            </div>
+
+            <section class="cabecalho-novo-ppc">
+                <h1>Novo PPC - Informações dos Componentes Curriculares</h1>
+            </section>
+
+            <form class="formulario form-novo-ppc">
+
+                <div class="grade-formulario">
+
+                    <div class="grupo-campo">
+                        <label>Código <span class="obrigatorio">*</span></label>
+                        <input type="text" placeholder="Digite o código do Componente Curricular">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Nome do Componente Curricular <span class="obrigatorio">*</span></label>
+                        <input type="text" placeholder="Digite o nome do Componente Curricular">
+                    </div>
+
+                    <div class="linha-tres-campos">
+                        <div class="grupo-campo">
+                            <label>Créditos de aulas práticas <span class="obrigatorio">*</span></label>
+                            <input type="text" placeholder="Créditos das aulas práticas">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Créditos de aulas teóricas <span class="obrigatorio">*</span></label>
+                            <input type="text" placeholder="Créditos das aulas teóricas">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Créditos de Extensão <span class="obrigatorio">*</span></label>
+                            <input type="text" placeholder="Créditos de Extensão">
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Total de Horas Práticas (H/R) <span class="obrigatorio">*</span></label>
+                        <input type="text" placeholder="Digite o total de horas das aulas práticas">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Total de Horas Teóricas (H/R) <span class="obrigatorio">*</span></label>
+                        <input type="text" placeholder="Digite o total de horas das aulas Teóricas">
+                    </div>
+
+                    <div class="linha-tres-campos">
+                        <div class="grupo-campo">
+                            <label>Total de Horas de Extensão (H/R) <span class="obrigatorio">*</span></label>
+                            <input type="text" placeholder="Digite o total de horas de Extensão">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Tipo <span class="obrigatorio">*</span></label>
+                            <input type="text" placeholder="tipo do Componente Curricular">
+                        </div>
+
+                        <div class="grupo-campo">
+                            <label>Período <span class="obrigatorio">*</span></label>
+                            <input type="text" placeholder="Digite o Período">
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Pré-requisitos <span class="obrigatorio">*</span></label>
+                        <input type="text" placeholder="Digite os Pré-requisitos">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label>Correquisitos <span class="obrigatorio">*</span></label>
+                        <input type="text" placeholder="Digite os Correquisitos">
+                    </div>
+
+                </div>
+
+                <section class="tabela-componentes">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Componentes Curriculares</th>
+                                <th>Tipo</th>
+                                <th>Período</th>
+                                <th>Créditos</th>
+                                <th>Total de Horas</th>
+                                <th>Total de Horas Práticas</th>
+                                <th>Total de H de Extensão</th>
+                                <th>Pré-requisitos</th>
+                                <th>Correquisitos</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="10">Nenhum componente adicionado ainda</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <div class="acoes-formulario">
+                    <button type="button" class="botao-cancelar">Cancelar</button>
+
+                    <button type="submit" class="botao-gerar">Gerar Documento</button>
+                </div>
+
+            </form>
+
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/ppc-form.js"></script>
+</body>
+
+</html>
