@@ -5,14 +5,23 @@
     <title>Visualização de PPC</title>
     <link rel="stylesheet" href="../css/impressao.css">
     <style>
-        /* Estilo para alinhar os botões */
         .container-acoes {
             display: flex;
             gap: 10px;
             justify-content: center;
             margin: 20px 0;
         }
+        .botao-imprimir {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #007bff;
+        }
     </style>
+    <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body class="folha-a4">
     <header class="cabecalho-documento">
@@ -25,34 +34,30 @@
     <div id="conteudo-ppc"></div>
 
     <div class="container-acoes">
-        <button onclick="window.print()" class="botao-imprimir">🖨️ Imprimir Documento em PDF</button>
-        <button onclick="baixarODT()" class="botao-imprimir" style="background-color: #28a745;">💾 Baixar .odt</button>
+        <button onclick="window.print()" class="botao-imprimir">🖨️ Imprimir PDF</button>
+        <button onclick="baixarDoc()" class="botao-imprimir" style="background-color: #28a745;">💾 Baixar .docx</button>
     </div>
 
 <script>
     const ppc = JSON.parse(sessionStorage.getItem('xppc_ppc_final'));
     const container = document.getElementById('conteudo-ppc');
 
-    // Função de exportação para ODT simples
-    function baixarODT() {
+    // Função que gera um arquivo Word real (que o LibreOffice abre perfeitamente)
+    function baixarDoc() {
         const conteudo = document.getElementById('conteudo-ppc').innerHTML;
-        // Cabeçalho básico XML para um arquivo ODT simples
-        const header = `<?xml version="1.0" encoding="UTF-8"?>
-        <office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" office:version="1.2">
-            <office:body><office:text><text:p>${conteudo.replace(/<[^>]*>/g, '')}</text:p></office:text></office:body>
-        </office:document-content>`;
+        const htmlFinal = `
+            <!DOCTYPE html>
+            <html>
+                <head><meta charset="UTF-8"></head>
+                <body>${conteudo}</body>
+            </html>`;
         
-        const blob = new Blob([conteudo], {type: "application/vnd.oasis.opendocument.text"});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "PPC_Curso.odt";
-        a.click();
+        const blob = htmlDocx.asBlob(htmlFinal);
+        saveAs(blob, 'PPC_Curso.docx');
     }
 
-    // Renderização mantida igual...
     container.innerHTML = `
-          <section class="secao-documento">
+           <section class="secao-documento">
 
     <h2>1. Dados Institucionais</h2>
 
@@ -227,7 +232,7 @@
     </table>
 
 </section>
-        `;
+    `;
 </script>
 </body>
 </html>
