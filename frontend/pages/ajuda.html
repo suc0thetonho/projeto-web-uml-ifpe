@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="../js/theme.js"></script>
 </head>
 
 <body>
@@ -25,14 +26,14 @@
         </div>
 
         <div class="topo-direita">
-            <img src="../assets/Moon.png" alt="Tema escuro" class="icone-tema">
-
-            <button class="switch-tema" type="button">
-                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
-                <span class="switch-bolinha"></span>
-            </button>
-
-            <img src="../assets/Sun.png" alt="Tema claro" class="icone-tema">
+            <img src="../assets/moon.png" alt="" aria-hidden="true" class="icone-tema icone-lua">
+            <label class="switch-tema" title="Alternar tema">
+                <input type="checkbox" id="toggle-tema" class="switch-input">
+                <span class="switch-trilho">
+                    <span class="switch-bolinha"></span>
+                </span>
+            </label>
+            <img src="../assets/sun.png" alt="" aria-hidden="true" class="icone-tema icone-sol">
         </div>
     </header>
 
@@ -70,7 +71,7 @@
         <main class="conteudo ajuda-page">
 
             <div class="breadcrumb">
-                <img src="../assets/button.png" alt="Início">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span>›</span>
                 <span>Página inicial</span>
                 <span>›</span>
@@ -83,25 +84,25 @@
                     Orientações rápidas para apoiar o preenchimento e a geração automatizada dos PPCs.
                 </p>
             </section>
-
+            
             <section class="cards-tutoriais">
 
                 <article class="card-tutorial">
                     <img src="../assets/graduation-cap.png" alt="Tutorial" class="icone-card">
                     <h3>Como criar um<br>Novo PPC</h3>
-                    <a href="#">Ver tutorial →</a>
+                    <a href="/frontend/pages/tutorial-novo-ppc">Ver tutorial →</a>
                 </article>
 
                 <article class="card-tutorial">
                     <img src="../assets/check.png" alt="Tutorial" class="icone-card">
                     <h3>Como montar a<br>matriz curricular</h3>
-                    <a href="#">Ver tutorial →</a>
+                    <a href="/frontend/pages/tutorial-matriz-curricular">Ver tutorial →</a>
                 </article>
 
                 <article class="card-tutorial">
                     <img src="../assets/graduation-cap.png" alt="Tutorial" class="icone-card">
                     <h3>Como acessar um<br>PPC em andamento</h3>
-                    <a href="#">Ver tutorial →</a>
+                    <a href="/frontend/pages/tutorial-ppc-andamento">Ver tutorial →</a>
                 </article>
 
             </section>
@@ -119,7 +120,6 @@
     </div>
 
     <script src="../js/api.js"></script>
-    <script src="../js/theme.js"></script>
     <script src="../js/faq.js"></script>
 </body>
 

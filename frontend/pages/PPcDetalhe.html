@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPCs cadastrados</title>
+    <title>Detalhes do PPC - xPPC</title>
 
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/ppcs-cadastrados.css">
+    <link rel="stylesheet" href="../css/ppc-detalhe.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,97 +41,62 @@
 
         <aside class="menu-lateral">
             <nav>
-                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                <a href="/frontend/pages/paginaInicial" class="item-menu">
                     <span>Página Inicial</span>
                     <img src="../assets/arrow.png" alt="">
                 </a>
 
-                <a href="/frontend/pages/NovoPPc.html" class="item-menu">
+                <a href="/frontend/pages/NovoPPc" class="item-menu">
                     <span>Novo PPC</span>
                     <img src="../assets/arrow.png" alt="">
                 </a>
 
-                <a href="/frontend/pages/PPcCad.html" class="item-menu ativo">
+                <a href="/frontend/pages/PPcCad" class="item-menu ativo">
                     <span>PPCs cadastrados</span>
                     <img src="../assets/arrow.png" alt="">
                 </a>
 
-                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                <a href="/frontend/pages/PPcAndamento" class="item-menu">
                     <span>PPCs em andamento</span>
                     <img src="../assets/arrow.png" alt="">
                 </a>
 
-                <a href="/frontend/pages/ajuda.html" class="item-menu">
+                <a href="/frontend/pages/ajuda" class="item-menu">
                     <span>Ajuda</span>
                     <img src="../assets/arrow.png" alt="">
                 </a>
             </nav>
         </aside>
 
-        <main class="conteudo ppcs-page">
+        <main class="conteudo ppc-detalhe-page">
 
             <div class="breadcrumb">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span>›</span>
                 <span>Página inicial</span>
                 <span>›</span>
-                <span>PPCs cadastrados</span>
+                <a href="/frontend/pages/PPcCad">PPCs cadastrados</a>
+                <span>›</span>
+                <span id="breadcrumb-nome">Detalhes do PPC</span>
             </div>
 
-            <section class="cabecalho-ppcs">
-                <h2>PPCs cadastrados</h2>
-                <p>Nesta página você encontra os documentos que já foram gerados.</p>
-            </section>
+            <div class="detalhe-acoes">
+                <a class="btn-voltar" href="/frontend/pages/PPcCad">← Voltar</a>
+                <a id="btn-pdf" class="btn-download btn-download-pdf" href="#" target="_blank">Baixar PDF</a>
+                <a id="btn-odt" class="btn-download btn-download-odt" href="#" target="_blank">Baixar ODT</a>
+            </div>
 
-            <section class="barra-busca">
-                <input type="text" id="buscarDocumento" placeholder="Buscar por Documento">
-            </section>
-
-            <section class="card-tabela">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Documento</th>
-                            <th>Data de envio</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tabelaPpcs">
-                        <tr>
-                            <td colspan="3" style="text-align: center;">Carregando...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+            <div id="conteudo-ppc">
+                <p style="text-align:center; padding: 3rem; color:#888;">Carregando dados do PPC...</p>
+            </div>
 
         </main>
-
     </div>
 
     <script src="../js/api.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/auth.js"></script>
-    <script src="../js/ppc-listas.js"></script>
-    <style>
-        .acoes-tabela { display: flex; gap: 8px; align-items: center; }
-        .btn-acao {
-            height: 28px;
-            padding: 0 14px;
-            border-radius: 18px;
-            font-size: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        .btn-pdf { background-color: #fff; border: 1px solid #A1E19E; color: #444; }
-        .btn-pdf:hover { border-color: #369831; }
-        .btn-odt { background-color: #fff; border: 1px solid #A1E19E; color: #444; }
-        .btn-odt:hover { border-color: #369831; }
-    </style>
+    <script src="../js/ppc-detalhe.js"></script>
 </body>
 
 </html>

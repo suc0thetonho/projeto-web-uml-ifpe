@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: graduflow-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: usuario
+      POSTGRES_PASSWORD: senha
+      POSTGRES_DB: xppc2
+    ports:
+      - "5433:5432"
+    volumes:
+      - graduflow_data:/var/lib/postgresql/data
+
+volumes:
+  graduflow_data:

@@ -81,7 +81,7 @@ function addFaqStyles() {
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname.includes('ajuda.html')) {
+    if (window.location.pathname.includes('ajuda')) {
         addFaqStyles();
         carregarPerguntas();
     }

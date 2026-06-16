@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="../js/theme.js"></script>
 </head>
 
 <body>
@@ -25,14 +26,14 @@
         </div>
 
         <div class="topo-direita">
-            <img src="../assets/Moon.png" alt="Tema escuro" class="icone-tema">
-
-            <button class="switch-tema" type="button">
-                <img src="../assets/Vector.png" alt="Alternar tema" class="switch-fundo">
-                <span class="switch-bolinha"></span>
-            </button>
-
-            <img src="../assets/Sun.png" alt="Tema claro" class="icone-tema">
+            <img src="../assets/moon.png" alt="" aria-hidden="true" class="icone-tema icone-lua">
+            <label class="switch-tema" title="Alternar tema">
+                <input type="checkbox" id="toggle-tema" class="switch-input">
+                <span class="switch-trilho">
+                    <span class="switch-bolinha"></span>
+                </span>
+            </label>
+            <img src="../assets/sun.png" alt="" aria-hidden="true" class="icone-tema icone-sol">
         </div>
     </header>
 
@@ -70,7 +71,7 @@
         <main class="conteudo ppcs-page">
 
             <div class="breadcrumb">
-                <img src="../assets/button.png" alt="Início">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span>›</span>
                 <span>Página inicial</span>
                 <span>›</span>
@@ -93,12 +94,13 @@
                             <th>Documento</th>
                             <th>Data de envio</th>
                             <th>Status</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
 
                     <tbody id="tabelaPpcsAndamento">
                         <tr>
-                            <td colspan="3" style="text-align: center;">Carregando...</td>
+                            <td colspan="4" style="text-align: center;">Carregando...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -109,9 +111,26 @@
     </div>
 
     <script src="../js/api.js"></script>
+    <script src="../js/utils.js"></script>
     <script src="../js/auth.js"></script>
-    <script src="../js/theme.js"></script>
     <script src="../js/ppc-listas.js"></script>
+    <style>
+        .acoes-tabela { display: flex; gap: 8px; align-items: center; }
+        .btn-acao {
+            height: 28px;
+            padding: 0 14px;
+            border-radius: 18px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+        }
+        .btn-excluir { border: 1px solid #ff5b2e; color: #444; }
+        .btn-excluir:hover { background-color: #fff3f0; }
+    </style>
 </body>
 
 </html>

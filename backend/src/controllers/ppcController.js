@@ -6,6 +6,7 @@ exports.criarPpc = async (req, res) => {
     try {
         const {
             usuarioId,
+            status,
             // ETAPA 1: Dados do Campus
             campusNome, campusCidade, campusCnpj, campusCep, campusBairro,
             campusRua, campusNumero, campusTelefoneFax, campusEmail, campusAtoLegal, campusSite,
@@ -44,7 +45,8 @@ exports.criarPpc = async (req, res) => {
                 ofertaVagasSemestre: Number(ofertaVagasSemestre),
                 ofertaDuracao: Number(ofertaDuracao),
                 indicadorCC, indicadorCPC, indicadorEnade, indicadorIGC,
-                cursoSituacao, cursoStatus
+                cursoSituacao, cursoStatus,
+                status
             }
         });
 
@@ -108,10 +110,13 @@ exports.atualizarPpc = async (req, res) => {
         const { id } = req.params;
         const dadosAtualizados = req.body;
 
-        // Converte campos numéricos caso venham no body de atualização
-        if (dadosAtualizados.cursoSemanasLetivas) dadosAtualizados.cursoSemanasLetivas = Number(dadosAtualizados.cursoSemanasLetivas);
-        if (dadosAtualizados.cursoAtivComplem) dadosAtualizados.cursoAtivComplem = Number(dadosAtualizados.cursoAtivComplem);
-        if (dadosAtualizados.ofertaNumTurmas) dadosAtualizados.ofertaNumTurmas = Number(dadosAtualizados.ofertaNumTurmas);
+        const camposNumericos = [
+            'cursoSemanasLetivas', 'cursoAtivComplem', 'cursoIntegMinima', 'cursoIntegMaxima',
+            'ofertaNumTurmas', 'ofertaVagasTurma', 'ofertaVagasTurno', 'ofertaVagasSemestre', 'ofertaDuracao'
+        ];
+        camposNumericos.forEach(campo => {
+            if (dadosAtualizados[campo] !== undefined) dadosAtualizados[campo] = Number(dadosAtualizados[campo]);
+        });
 
         const ppcAtualizado = await prisma.ppc.update({
             where: { id: Number(id) },

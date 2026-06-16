@@ -3,8 +3,11 @@ const express = require('express');
 const cors = require('cors');
 
 // Importação dos roteadores das entidades
+const authRoutes = require('./routes/authRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const ppcRoutes = require('./routes/ppcRoutes');
+const componenteRoutes = require('./routes/componenteRoutes');
+const exportRoutes = require('./routes/exportRoutes');
 
 const app = express();
 
@@ -21,6 +24,18 @@ app.use(express.json());
 // Permite interpretar dados vindos de formulários padrão (caso necessário)
 app.use(express.urlencoded({ extended: true }));
 
+// Log de todas as requisições recebidas
+app.use((req, _res, next) => {
+    const agora = new Date().toLocaleTimeString('pt-BR');
+    console.log(`[${agora}] ${req.method} ${req.originalUrl}`);
+    if (req.body && Object.keys(req.body).length > 0) {
+        const bodyLog = { ...req.body };
+        if (bodyLog.senha) bodyLog.senha = '***';
+        console.log('  body:', JSON.stringify(bodyLog));
+    }
+    next();
+});
+
 // ==========================================
 // ROTAS DE DIAGNÓSTICO / SAÚDE DA API
 // ==========================================
@@ -36,11 +51,20 @@ app.get('/api/health', (req, res) => {
 // VINCULAÇÃO DOS ENDPOINTS (ROTAS)
 // ==========================================
 
+// Endpoints de autenticação
+app.use('/api/auth', authRoutes);
+
 // Endpoints relacionados aos Coordenadores/Usuários
 app.use('/api/usuarios', usuarioRoutes);
 
 // Endpoints relacionados aos Projetos Pedagógicos de Curso (PPCs)
 app.use('/api/ppcs', ppcRoutes);
+
+// Endpoints de componentes curriculares (disciplinas) de um PPC
+app.use('/api/ppcs/:ppcId/componentes', componenteRoutes);
+
+// Endpoints de exportação (PDF, ODT)
+app.use('/api/ppcs', exportRoutes);
 
 // ==========================================
 // TRATAMENTO DE ROTAS NÃO ENCONTRADAS (404)

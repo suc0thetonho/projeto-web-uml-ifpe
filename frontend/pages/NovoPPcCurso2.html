@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="../js/theme.js"></script>
 </head>
 
 <body>
@@ -27,14 +28,14 @@
         </div>
 
         <div class="topo-direita">
-            <img src="../assets/moon.png" alt="Modo escuro" class="icone-tema">
-
-            <button class="switch-tema" type="button">
-                <img src="../assets/vector.png" alt="Alternar tema" class="switch-fundo">
-                <span class="switch-bolinha"></span>
-            </button>
-
-            <img src="../assets/sun.png" alt="Modo claro" class="icone-tema">
+            <img src="../assets/moon.png" alt="" aria-hidden="true" class="icone-tema icone-lua">
+            <label class="switch-tema" title="Alternar tema">
+                <input type="checkbox" id="toggle-tema" class="switch-input">
+                <span class="switch-trilho">
+                    <span class="switch-bolinha"></span>
+                </span>
+            </label>
+            <img src="../assets/sun.png" alt="" aria-hidden="true" class="icone-tema icone-sol">
         </div>
     </header>
 
@@ -76,7 +77,7 @@
 
             <!-- CAMINHO -->
             <div class="breadcrumb">
-                <img src="../assets/button.png" alt="Página inicial">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 <span>›</span>
                 <span>Página Inicial</span>
                 <span>›</span>
@@ -93,63 +94,79 @@
 
                     <div class="grupo-campo">
                         <label>Regime <span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o regime do curso">
+                        <select name="ofertaRegime">
+                            <option value="">Selecione o regime</option>
+                            <option value="Integral">Integral</option>
+                            <option value="Parcial">Parcial</option>
+                        </select>
                     </div>
 
                     <div class="grupo-campo">
                         <label>Turnos <span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe quantos turnos o curso é oferecido">
+                        <input type="text" name="ofertaTurnos" placeholder="Informe quantos turnos o curso é oferecido">
                     </div>
 
                     <div class="grupo-campo">
                         <label>Número de turmas por turno de oferta<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o número de turmas por turno de oferta">
+                        <input type="number" name="ofertaNumTurmas" placeholder="Informe o número de turmas por turno de oferta">
                     </div>
 
                     <div class="grupo-campo">
                         <label>Vagas por turma<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o número de vagas por turma">
+                        <input type="number" name="ofertaVagasTurma" placeholder="Informe o número de vagas por turma">
                     </div>
 
                     <div class="grupo-campo">
                         <label>Número de vagas por turno de oferta<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o número de vagas por turno de oferta">
+                        <input type="number" name="ofertaVagasTurno" placeholder="Informe o número de vagas por turno de oferta">
                     </div>
                     <div class="grupo-campo">
                         <label>Vagas por semestre<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o número de vagas por semestre">
+                        <input type="number" name="ofertaVagasSemestre" placeholder="Informe o número de vagas por semestre">
                     </div>
 
                     <div class="grupo-campo campo-inteiro">
                         <label>Duração do Curso <span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe a duração do curso">
+                        <input type="number" name="ofertaDuracao" placeholder="Informe a duração do curso">
                     </div>
 
                     <div class="grupo-campo">
                         <label>Conceito de Curso (CC)<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o conceito de curso (CC)">
+                        <input type="text" name="indicadorCC" placeholder="Informe o conceito de curso (CC)">
                     </div>
                     <div class="grupo-campo">
                         <label>Conceito Preliminar de Curso (CPC)<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o conceito preliminar de curso (CPC)">
+                        <input type="text" name="indicadorCPC" placeholder="Informe o conceito preliminar de curso (CPC)">
                     </div>
 
                     <div class="grupo-campo">
                         <label>Conceito Enade<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o conceito do Enade">
+                        <input type="text" name="indicadorEnade" placeholder="Informe o conceito do Enade">
                     </div>
                     <div class="grupo-campo">
                         <label>Indice Geral de Cursos (IGC)<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o índice geral de cursos (IGC)">
+                        <input type="text" name="indicadorIGC" placeholder="Informe o índice geral de cursos (IGC)">
                     </div>
 
                     <div class="grupo-campo">
-                        <label>Situação do Curso<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe a situação do curso">
+                        <label>Situação do Curso <span class="obrigatorio">*</span></label>
+                        <select name="cursoSituacao">
+                            <option value="">Selecione a situação</option>
+                            <option value="Apresentação inicial do PPC">Apresentação inicial do PPC</option>
+                            <option value="Reformulação integral do PPC">Reformulação integral do PPC</option>
+                            <option value="Reformulação parcial do PPC">Reformulação parcial do PPC</option>
+                        </select>
                     </div>
                     <div class="grupo-campo">
-                        <label>Status do Curso<span class="obrigatorio">*</span></label>
-                        <input type="text" placeholder="Informe o status do curso">
+                        <label>Status do Curso <span class="obrigatorio">*</span></label>
+                        <select name="cursoStatus">
+                            <option value="">Selecione o status</option>
+                            <option value="Aguardando autorização do conselho superior">Aguardando autorização do conselho superior</option>
+                            <option value="Autorizado pelo conselho superior">Autorizado pelo conselho superior</option>
+                            <option value="Aguardando reconhecimento do MEC">Aguardando reconhecimento do MEC</option>
+                            <option value="Reconhecido pelo MEC">Reconhecido pelo MEC</option>
+                            <option value="Cadastrado no SISTEC">Cadastrado no SISTEC</option>
+                        </select>
                     </div>
 
                 </div>
@@ -159,7 +176,7 @@
 
                     <div class="acoes-direita">
                         <button type="button" class="botao-rascunho">Salvar rascunho</button>
-                        <a href="/frontend/pages/NovoPPcComponentes.html" class="botao-proximo">Próximo</a>
+                        <button type="submit" class="botao-proximo">Próximo</button>
                     </div>
                 </div>
 
@@ -170,7 +187,6 @@
 
     <script src="../js/api.js"></script>
     <script src="../js/auth.js"></script>
-    <script src="../js/theme.js"></script>
     <script src="../js/ppc-form.js"></script>
     <script src="../js/utils.js"></script>
 </body>

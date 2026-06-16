@@ -1,4 +1,5 @@
 // src/controllers/usuarioController.js
+const bcrypt = require('bcrypt');
 const prisma = require('../config/database');
 
 // 1. Cadastrar um Coordenador/Usuário (RF01 / VAL04)
@@ -23,7 +24,7 @@ exports.criarUsuario = async (req, res) => {
                 departamentoSetor,
                 campus,
                 cidade,
-                senha // Lembrete: No futuro, aplicamos o hash aqui (RNF07)
+                senha: await bcrypt.hash(senha, 10)
             }
         });
 
