@@ -170,3 +170,85 @@
     color: #aaa;
     align-self: center;
 }
+
+.link-tutorial {
+    color: #0056c7;
+}
+
+/* ===================== */
+/* DARK MODE             */
+/* ===================== */
+
+html.dark-theme .cabecalho-tutorial h2 {
+    color: var(--text);
+}
+
+html.dark-theme .cabecalho-tutorial p {
+    color: var(--text-muted);
+}
+
+html.dark-theme .botao-voltar-tutorial {
+    color: var(--text-muted);
+}
+
+html.dark-theme .passo {
+    background: var(--surface);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+html.dark-theme .numero-passo {
+    background-color: #e8e8e8;
+    color: #111;
+}
+
+html.dark-theme .conteudo-passo h3 {
+    color: var(--text);
+}
+
+html.dark-theme .conteudo-passo p,
+html.dark-theme .conteudo-passo ul li {
+    color: var(--text-muted);
+}
+
+html.dark-theme .destaque-acao {
+    background: #1a2a4a;
+    color: #90b4f0;
+}
+
+html.dark-theme .destaque-aviso {
+    background: #3a2a10;
+    color: #f0a050;
+}
+
+html.dark-theme .destaque-sucesso {
+    background: #1a3020;
+    color: #a5d6a7;
+}
+
+html.dark-theme .caixa-dica {
+    background: var(--surface);
+    border-left-color: #e8e8e8;
+    color: var(--text-muted);
+}
+
+html.dark-theme .caixa-dica strong {
+    color: var(--text);
+}
+
+html.dark-theme .etapa-pill {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+
+html.dark-theme .etapa-pill .num {
+    color: var(--text);
+}
+
+html.dark-theme .etapa-seta {
+    color: var(--text-muted);
+}
+
+html.dark-theme .link-tutorial {
+    color: var(--text-muted);
+}

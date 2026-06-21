@@ -14,12 +14,16 @@
     font-size: 34px;
     font-weight: 700;
     margin-bottom: 8px;
-    color: #111;
+    color: var(--text);
 }
 
 .cabecalho-ppcs p {
     font-size: 15px;
     color: #333;
+}
+
+html.dark-theme .cabecalho-ppcs p {
+    color: var(--text-muted);
 }
 
 
@@ -32,8 +36,8 @@
 
     margin: 0 auto 45px auto;
 
-    background-color: #ffffff;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    background-color: var(--surface);
+    box-shadow: 0 3px 8px var(--shadow);
 
     display: flex;
     align-items: center;
@@ -54,8 +58,18 @@
     outline: none;
 }
 
+html.dark-theme .barra-busca input {
+    background-color: var(--input-bg);
+    color: var(--text);
+    border-color: var(--input-border);
+}
+
 .barra-busca input::placeholder {
     color: #333;
+}
+
+html.dark-theme .barra-busca input::placeholder {
+    color: var(--text-muted);
 }
 
 /* Card da tabela */
@@ -66,9 +80,9 @@
 
     margin: 0 auto;
 
-    background-color: #ffffff;
+    background-color: var(--surface);
 
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 8px var(--shadow);
 
     padding: 22px 20px;
 }
@@ -101,6 +115,12 @@
     color: #0056c7;
     font-style: italic;
     text-decoration: underline;
+}
+
+html.dark-theme .card-tabela th,
+html.dark-theme .card-tabela td,
+html.dark-theme .card-tabela a {
+    color: var(--text);
 }
 
 .card-tabela td:nth-child(3) {

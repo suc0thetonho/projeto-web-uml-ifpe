@@ -151,7 +151,9 @@
 
                         <div class="grupo-campo">
                             <label>Período <span class="obrigatorio">*</span></label>
-                            <input type="number" name="periodo" placeholder="Ex: 1, 2, 3...">
+                            <input type="text" name="periodo" list="lista-periodos"
+                                   placeholder="Selecione ou digite um período" autocomplete="off">
+                            <datalist id="lista-periodos"></datalist>
                         </div>
                     </div>
 

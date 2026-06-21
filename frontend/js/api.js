@@ -1,11 +1,20 @@
+// URL base da API do backend — todas as requisições partem deste endereço
 const API_BASE_URL = 'http://localhost:3000/api';
 
+/**
+ * Função central de comunicação com o backend.
+ * Todas as outras funções deste arquivo usam apiRequest internamente.
+ * Ela padroniza: headers, tratamento de erros e formato de retorno.
+ * Retorna sempre um objeto { success: bool, data | error }.
+ */
 async function apiRequest(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
     const defaultOptions = {
         headers: { 'Content-Type': 'application/json' },
     };
 
+    // Mescla as opções padrão com as recebidas (ex: method, body)
+    // O spread (...) garante que headers customizados não sobrescrevam o Content-Type
     const finalOptions = {
         ...defaultOptions,
         ...options,
@@ -13,8 +22,10 @@ async function apiRequest(endpoint, options = {}) {
     };
 
     try {
+        // fetch() é a API nativa do navegador para fazer requisições HTTP
         const response = await fetch(url, finalOptions);
 
+        // 204 = No Content (usado em DELETE) — não tem corpo para parsear
         if (response.status === 204) {
             return { success: true, data: null };
         }
@@ -25,7 +36,8 @@ async function apiRequest(endpoint, options = {}) {
             throw new Error(data.error || data.message || 'Erro na requisição');
         }
 
-        // Desempacota { success: true, data: ... } que o backend envolve nas respostas
+        // O backend envolve respostas em { success: true, data: {...} }.
+        // Aqui "desempacotamos" para que o chamador receba direto o conteúdo útil.
         const unwrapped = (data !== null && typeof data === 'object' && !Array.isArray(data) && 'data' in data)
             ? data.data
             : data;
@@ -125,6 +137,51 @@ async function deletarComponente(ppcId, componenteId) {
 }
 
 // ==========================================
+// CAMPI
+// ==========================================
+
+async function listarCampi() {
+    return apiRequest('/campi');
+}
+
+async function criarCampus(dados) {
+    return apiRequest('/campi', {
+        method: 'POST',
+        body: JSON.stringify(dados),
+    });
+}
+
+// ==========================================
+// SITES
+// ==========================================
+
+async function listarSites() {
+    return apiRequest('/sites');
+}
+
+async function criarSite(dados) {
+    return apiRequest('/sites', {
+        method: 'POST',
+        body: JSON.stringify(dados),
+    });
+}
+
+// ==========================================
+// PERIODOS
+// ==========================================
+
+async function listarPeriodos() {
+    return apiRequest('/periodos');
+}
+
+async function criarPeriodo(dados) {
+    return apiRequest('/periodos', {
+        method: 'POST',
+        body: JSON.stringify(dados),
+    });
+}
+
+// ==========================================
 // SESSÃO
 // ==========================================
 
@@ -143,6 +200,8 @@ function encerrarSessao() {
     window.location.href = '/frontend/pages/login.html';
 }
 
+// Expõe todas as funções da API como window.api para que qualquer outro
+// arquivo JS possa chamá-las (ex: window.api.criarPpc(dados))
 window.api = {
     login,
     cadastrarUsuario,
@@ -157,6 +216,12 @@ window.api = {
     atualizarComponente,
     deletarTodosComponentes,
     deletarComponente,
+    listarCampi,
+    criarCampus,
+    listarSites,
+    criarSite,
+    listarPeriodos,
+    criarPeriodo,
     getUsuarioLogado,
     getUsuarioId,
     encerrarSessao,

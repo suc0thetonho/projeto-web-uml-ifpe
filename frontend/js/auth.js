@@ -1,12 +1,18 @@
+// Páginas que só podem ser acessadas por usuários logados
 const PAGINAS_PROTEGIDAS = [
     'paginaInicial', 'NovoPPc', 'NovoPPcCurso',
     'NovoPPcCurso2', 'NovoPPcComponentes', 'PPcCad', 'PPcAndamento'
 ];
 
+// Verifica se a URL atual corresponde a alguma página protegida
 function paginaAtualProtegida() {
     return PAGINAS_PROTEGIDAS.some(p => window.location.pathname.includes(p));
 }
 
+/**
+ * Proteção de rotas no frontend: se o usuário não está logado (não tem dados
+ * no localStorage) e tenta acessar uma página protegida, redireciona para login.
+ */
 function checarAutenticacao() {
     if (paginaAtualProtegida() && !window.api.getUsuarioLogado()) {
         window.location.href = '/frontend/pages/login.html';
@@ -15,6 +21,8 @@ function checarAutenticacao() {
 
 // ==========================================
 // CADASTRO — Etapa 1 (cadastro.html)
+// Coleta dados pessoais e salva temporariamente no localStorage.
+// O cadastro é dividido em 2 etapas: dados pessoais → definição de senha.
 // ==========================================
 function initCadastro() {
     const form = document.querySelector('form.formulario');
@@ -51,6 +59,7 @@ function initCadastro() {
             return;
         }
 
+        // Salva os dados temporariamente para a etapa 2 (definição de senha)
         localStorage.setItem('cadastroTemp', JSON.stringify(dados));
         window.location.href = '/frontend/pages/defsenha.html';
     });
@@ -58,6 +67,8 @@ function initCadastro() {
 
 // ==========================================
 // CADASTRO — Etapa 2 (defsenha.html)
+// Recupera os dados pessoais do localStorage, junta com a senha
+// e envia tudo para a API POST /api/usuarios para criar o coordenador.
 // ==========================================
 function initDefSenha() {
     const form = document.querySelector('form.formulario-senha');
@@ -87,6 +98,7 @@ function initDefSenha() {
             return;
         }
 
+        // Junta os dados pessoais (etapa 1) com a senha (etapa 2) usando spread (...)
         const resultado = await window.api.cadastrarUsuario({ ...dadosTemp, senha });
 
         if (resultado.success) {
@@ -121,6 +133,8 @@ function initLogin() {
 
         if (resultado.success) {
             const usuario = resultado.data;
+            // Salva os dados do usuário no localStorage para manter a "sessão" ativa.
+            // Enquanto esses dados existirem, o usuário é considerado logado.
             localStorage.setItem('usuario', JSON.stringify(usuario));
             localStorage.setItem('usuarioId', usuario.id);
             window.location.href = '/frontend/pages/paginaInicial.html';
@@ -146,6 +160,8 @@ function initLogout() {
 // ==========================================
 // INICIALIZAÇÃO
 // ==========================================
+// Ao carregar qualquer página, verifica autenticação e inicializa
+// a funcionalidade correspondente à página atual (cadastro, login, etc.)
 document.addEventListener('DOMContentLoaded', () => {
     checarAutenticacao();
 

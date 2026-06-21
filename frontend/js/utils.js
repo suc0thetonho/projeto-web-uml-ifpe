@@ -1,6 +1,10 @@
-// Funções utilitárias gerais
+// Funções utilitárias gerais (máscaras de input, validações e notificações)
 
-// Máscara para CPF
+/**
+ * Máscara para CPF: formata "12345678901" → "123.456.789-01"
+ * replace(/\D/g, '') remove tudo que não é dígito.
+ * As regex seguintes inserem pontos e traço nas posições corretas.
+ */
 function mascaraCPF(cpf) {
     cpf = cpf.replace(/\D/g, '');
     cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
@@ -43,12 +47,21 @@ function validarEmail(email) {
     return regex.test(email);
 }
 
-// Validar CPF
+/**
+ * Validação de CPF usando o algoritmo oficial dos dígitos verificadores.
+ * 1. Remove caracteres não numéricos
+ * 2. Rejeita CPFs com todos os dígitos iguais (ex: 111.111.111-11)
+ * 3. Calcula o 1º dígito verificador (posição 10) usando pesos de 10 a 2
+ * 4. Calcula o 2º dígito verificador (posição 11) usando pesos de 11 a 2
+ * 5. Compara os dígitos calculados com os informados
+ */
 function validarCPF(cpf) {
     cpf = cpf.replace(/\D/g, '');
     if (cpf.length !== 11) return false;
+    // Rejeita CPFs com todos os dígitos iguais (ex: 000.000.000-00)
     if (/^(\d)\1{10}$/.test(cpf)) return false;
 
+    // Cálculo do 1º dígito verificador
     let soma = 0;
     for (let i = 0; i < 9; i++) {
         soma += parseInt(cpf.charAt(i)) * (10 - i);
@@ -57,6 +70,7 @@ function validarCPF(cpf) {
     let digito1 = resto >= 10 ? 0 : resto;
     if (parseInt(cpf.charAt(9)) !== digito1) return false;
 
+    // Cálculo do 2º dígito verificador
     soma = 0;
     for (let i = 0; i < 10; i++) {
         soma += parseInt(cpf.charAt(i)) * (11 - i);
@@ -66,7 +80,11 @@ function validarCPF(cpf) {
     return parseInt(cpf.charAt(10)) === digito2;
 }
 
-// Mostrar notificação toast
+/**
+ * Exibe uma notificação "toast" no canto inferior direito da tela.
+ * O toast é criado dinamicamente via DOM e removido após 3 segundos.
+ * Tipos: 'error' (vermelho), 'success' (verde), 'info' (azul).
+ */
 function mostrarNotificacao(mensagem, tipo = 'info') {
     const toast = document.createElement('div');
     toast.textContent = mensagem;
@@ -101,7 +119,11 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Aplicar máscaras automaticamente nos inputs
+/**
+ * Aplica máscaras automaticamente nos inputs com base no placeholder.
+ * Usa querySelectorAll com seletor de atributo para encontrar inputs relevantes.
+ * O evento 'input' dispara a cada tecla digitada, reformatando em tempo real.
+ */
 function aplicarMascaras() {
     // CPF
     document.querySelectorAll('input[placeholder*="CPF"]').forEach(input => {
@@ -137,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aplicarMascaras();
 });
 
+// Expõe as funções utilitárias como window.utils para uso global
 window.utils = {
     mascaraCPF,
     mascaraTelefone,

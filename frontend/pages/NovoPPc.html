@@ -98,7 +98,9 @@
 
                     <div class="grupo-campo campo-inteiro">
                         <label>Nome do Campus <span class="obrigatorio">*</span></label>
-                        <input type="text" name="campusNome" placeholder="Informe o nome do campus">
+                        <input type="text" name="campusNome" list="lista-campi"
+                               placeholder="Selecione ou digite um novo campus" autocomplete="off">
+                        <datalist id="lista-campi"></datalist>
                     </div>
 
                     <div class="grupo-campo">
@@ -149,8 +151,10 @@
                     </div>
 
                     <div class="grupo-campo">
-                        <label>sitio <span class="obrigatorio">*</span></label>
-                        <input type="text" name="campusSite" placeholder="Informe o site do campus">
+                        <label>Site <span class="obrigatorio">*</span></label>
+                        <input type="text" name="campusSite" list="lista-sites"
+                               placeholder="Selecione ou digite um novo site" autocomplete="off">
+                        <datalist id="lista-sites"></datalist>
                     </div>
 
                 </div>

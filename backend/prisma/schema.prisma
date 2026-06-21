@@ -108,7 +108,7 @@ model ComponenteCurricular {
   horasTeoricas    Int
   horasExtensao    Int
   tipo             String   // Ex: Obrigatória / Eletiva
-  periodo          Int      // Qual período a disciplina pertence (1º, 2º...)
+  periodo          String   // Qual período a disciplina pertence (1º, 2º...)
   preRequisitos    String   @default("") // VAL13: Guardará os códigos das disciplinas
   correquisitos    String   @default("")
 
@@ -119,4 +119,47 @@ model ComponenteCurricular {
   // Garante a regra RN14/VAL12: Código único de componente DENTRO do mesmo PPC
   @@unique([codigo, ppcId])
   @@map("componentes_curriculares")
+}
+
+// ==========================================
+// 4. ENTIDADE: CAMPUS
+// ==========================================
+model Campus {
+  id          Int      @id @default(autoincrement())
+  nome        String   @unique
+  cidade      String   @default("")
+  cnpj        String   @default("")
+  cep         String   @default("")
+  bairro      String   @default("")
+  rua         String   @default("")
+  numero      String   @default("")
+  telefoneFax String   @default("")
+  email       String   @default("")
+  atoLegal    String   @default("")
+  site        String   @default("")
+  createdAt   DateTime @default(now())
+
+  @@map("campi")
+}
+
+// ==========================================
+// 5. ENTIDADE: SITE (sugestões de URL)
+// ==========================================
+model Site {
+  id        Int      @id @default(autoincrement())
+  url       String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("sites")
+}
+
+// ==========================================
+// 6. ENTIDADE: PERIODO (sugestões de período)
+// ==========================================
+model Periodo {
+  id        Int      @id @default(autoincrement())
+  valor     String   @unique
+  createdAt DateTime @default(now())
+
+  @@map("periodos")
 }

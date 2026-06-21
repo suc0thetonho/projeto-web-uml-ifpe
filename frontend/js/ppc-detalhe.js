@@ -1,3 +1,8 @@
+/**
+ * Helper que gera o HTML de um campo de detalhe (label + valor).
+ * Se o valor estiver vazio, adiciona a classe "vazio" para estilização.
+ * Usa template literals (crases) para interpolar variáveis no HTML.
+ */
 function campo(label, valor) {
     const texto = (valor !== null && valor !== undefined && valor !== '' && valor !== 0)
         ? String(valor)
@@ -9,6 +14,7 @@ function campo(label, valor) {
         </div>`;
 }
 
+// Renderiza toda a página de detalhe do PPC usando template literals para montar o HTML
 function renderizarPpc(ppc) {
     const API_BASE = 'http://localhost:3000/api';
     document.title = `${ppc.cursoNome || 'PPC'} - xPPC`;
@@ -129,6 +135,7 @@ function renderizarPpc(ppc) {
     `;
 }
 
+// Ao carregar a página, extrai o ID do PPC da URL (?id=123) e busca na API
 document.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');

@@ -1,7 +1,10 @@
-// index.js
+/**
+ * index.js — Ponto de entrada da aplicação.
+ * Importa o app Express configurado em src/app.js e inicia o servidor HTTP.
+ * A porta é definida no arquivo .env (variável PORT) ou usa 3000 como padrão.
+ */
 const app = require('./src/app');
 
-// Puxa a porta do arquivo .env ou usa a 3000 como padrão
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

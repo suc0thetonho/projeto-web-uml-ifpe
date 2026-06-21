@@ -36,8 +36,8 @@ html.dark-theme {
     --divider: #555555;
     --shadow: rgba(0, 0, 0, 0.55);
     --menu-border: #2e2e2e;
-    --menu-active-border: #369831;
-    --menu-active-text: #66cc6a;
+    --menu-active-border: #e8e8e8;
+    --menu-active-text: #e8e8e8;
     --switch-track: #369831;
     --switch-thumb: #ffffff;
     --input-bg: #2a2a2a;
@@ -250,6 +250,10 @@ html.dark-theme .icone-sol {
     object-fit: contain;
 }
 
+html.dark-theme .item-menu img {
+    filter: brightness(0) invert(0.9);
+}
+
 .item-menu.ativo {
     border: 1px solid var(--menu-active-border);
     color: var(--menu-active-text);
@@ -281,6 +285,16 @@ html.dark-theme .icone-sol {
     color: var(--text-muted);
 
     margin-bottom: 22px;
+}
+
+.breadcrumb a,
+.breadcrumb a:visited {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
 }
 
 .breadcrumb svg {
@@ -356,6 +370,22 @@ html.dark-theme .icone-sol {
     font-style: italic;
 }
 
+html.dark-theme .card-resumo p {
+    color: var(--text);
+}
+
+html.dark-theme .texto-laranja {
+    color: #f0a050;
+}
+
+html.dark-theme .texto-verde {
+    color: #a5d6a7;
+}
+
+html.dark-theme .card-resumo img {
+    filter: brightness(0) invert(1);
+}
+
 .texto-laranja {
     color: #d46b08;
 }
@@ -428,6 +458,15 @@ html.dark-theme .icone-sol {
     justify-content: center;
 }
 
+html.dark-theme .card-criar h3 {
+    color: var(--text);
+}
+
+html.dark-theme .botao-novo {
+    background-color: #333;
+    color: #fff;
+}
+
 .etapas {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -464,6 +503,14 @@ html.dark-theme .icone-sol {
     font-style: italic;
 }
 
+html.dark-theme .etapa span {
+    color: var(--text);
+}
+
+html.dark-theme .etapa p {
+    color: var(--text-muted);
+}
+
 /* CARD AUTOMAÇÃO */
 
 .card-automacao {
@@ -489,6 +536,14 @@ html.dark-theme .icone-sol {
     line-height: 1.25;
     color: var(--text-blue);
     font-style: italic;
+}
+
+html.dark-theme .card-automacao h3 {
+    color: var(--text);
+}
+
+html.dark-theme .card-automacao p {
+    color: var(--text-muted);
 }
 
 /* ===================== */
@@ -519,6 +574,14 @@ html.dark-theme .icone-sol {
     font-size: 13px;
     color: var(--text-blue);
     font-style: italic;
+}
+
+html.dark-theme .ultimas-atividades h3 {
+    color: var(--text);
+}
+
+html.dark-theme .ultimas-atividades p {
+    color: var(--text-muted);
 }
 
 .botao-novo-adicionar {

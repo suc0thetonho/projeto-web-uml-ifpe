@@ -1,8 +1,8 @@
-// Gerenciamento das tabelas de PPCs cadastrados e em andamento
+// Gerenciamento das tabelas de PPCs nas páginas PPcCad.html e PPcAndamento.html
 
 const API_BASE = 'http://localhost:3000/api';
 
-// Carregar PPCs cadastrados (concluídos)
+// Busca todos os PPCs da API e renderiza apenas os CONCLUÍDOS na tabela
 async function carregarPpcsCadastrados() {
     const tbody = document.getElementById('tabelaPpcs');
     if (!tbody) return;
@@ -64,7 +64,7 @@ async function carregarPpcsAndamento() {
     }
 }
 
-// Buscar PPCs por nome
+// Busca PPCs por nome — filtra no backend via query string ?nome=termo
 async function buscarPpcs() {
     const buscaInput = document.getElementById('buscarDocumento');
     if (!buscaInput) return;
@@ -135,7 +135,12 @@ function verPpc(id, status) {
     window.location.href = `/frontend/pages/PPcDetalhe?id=${id}`;
 }
 
-// Buscar dinâmica enquanto digita (debounce)
+/**
+ * Busca dinâmica enquanto o usuário digita (técnica "debounce").
+ * Debounce: espera 500ms após a última tecla antes de buscar,
+ * evitando disparar uma requisição a cada caractere digitado.
+ * clearTimeout cancela a busca anterior se o usuário ainda está digitando.
+ */
 let buscaTimeout;
 function setupBuscaDinamica() {
     const buscaInput = document.getElementById('buscarDocumento');

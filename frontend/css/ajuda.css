@@ -70,6 +70,33 @@
     text-decoration: underline;
 }
 
+/* Dark mode — Cabeçalho e Cards */
+
+html.dark-theme .cabecalho-ajuda h2 {
+    color: var(--text);
+}
+
+html.dark-theme .cabecalho-ajuda p {
+    color: var(--text-muted);
+}
+
+html.dark-theme .card-tutorial {
+    background-color: var(--surface);
+    box-shadow: 0 3px 8px var(--shadow);
+}
+
+html.dark-theme .card-tutorial .icone-card {
+    filter: brightness(0) invert(1);
+}
+
+html.dark-theme .card-tutorial h3 {
+    color: var(--text);
+}
+
+html.dark-theme .card-tutorial a {
+    color: var(--text-muted);
+}
+
 /* Perguntas frequentes */
 
 .perguntas {
@@ -103,4 +130,19 @@
 
 .perguntas a:hover {
     text-decoration: underline;
+}
+
+/* Dark mode — Perguntas frequentes */
+
+html.dark-theme .perguntas {
+    background-color: var(--surface);
+    box-shadow: 0 3px 8px var(--shadow);
+}
+
+html.dark-theme .perguntas h3 {
+    color: var(--text);
+}
+
+html.dark-theme .perguntas a {
+    color: var(--text-muted);
 }

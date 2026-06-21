@@ -1,22 +1,31 @@
-// src/controllers/usuarioController.js
+/**
+ * Controller de Usuários (Coordenadores).
+ * Cada função exportada é vinculada a uma rota em usuarioRoutes.js.
+ * Padrão: recebe req (requisição) e res (resposta), interage com o banco via Prisma.
+ */
 const bcrypt = require('bcrypt');
 const prisma = require('../config/database');
 
-// 1. Cadastrar um Coordenador/Usuário (RF01 / VAL04)
+/**
+ * Cadastrar um novo coordenador.
+ * bcrypt.hash(senha, 10) gera um hash seguro da senha antes de salvar.
+ * O número 10 é o "salt rounds" — quantas vezes o algoritmo é aplicado
+ * (mais rounds = mais seguro, mas mais lento).
+ */
 exports.criarUsuario = async (req, res) => {
     try {
+        // Desestruturação: extrai cada campo do corpo da requisição
         const {
             nome, cpf, dataNascimento, email, telefoneCelular,
             matricula, cursoAreaCoordena, departamentoSetor,
             campus, cidade, senha
         } = req.body;
 
-        // Cria o registro usando exatamente os campos do seu schema
         const novoUsuario = await prisma.usuario.create({
             data: {
                 nome,
                 cpf,
-                dataNascimento: new Date(dataNascimento), // Garante o formato DateTime do Prisma
+                dataNascimento: new Date(dataNascimento), // Converte string para Date do Prisma
                 email,
                 telefoneCelular,
                 matricula,
@@ -24,16 +33,17 @@ exports.criarUsuario = async (req, res) => {
                 departamentoSetor,
                 campus,
                 cidade,
-                senha: await bcrypt.hash(senha, 10)
+                senha: await bcrypt.hash(senha, 10) // Hash da senha antes de salvar no banco
             }
         });
 
-        // Remove a senha do retorno por segurança
+        // Remove a senha do objeto retornado por segurança (nunca expor hash ao cliente)
         delete novoUsuario.senha;
 
         res.status(201).json({ success: true, data: novoUsuario });
     } catch (error) {
-        // Erro de restrição única do Prisma (P2002: CPF, Email ou Matrícula duplicados)
+        // P2002 é o código do Prisma para violação de constraint UNIQUE
+        // Ocorre quando CPF, email ou matrícula já existem no banco
         if (error.code === 'P2002') {
             return res.status(400).json({ error: `O campo '${error.meta.target}' informado já está cadastrado.` });
         }
@@ -41,11 +51,11 @@ exports.criarUsuario = async (req, res) => {
     }
 };
 
-// 2. Listar todos os Usuários
+// Lista todos os usuários, usando select para retornar apenas campos públicos (sem senha)
 exports.listarUsuarios = async (req, res) => {
     try {
         const usuarios = await prisma.usuario.findMany({
-            select: { // Retorna apenas o essencial, ocultando dados sensíveis
+            select: {
                 id: true,
                 nome: true,
                 email: true,

@@ -1,7 +1,15 @@
+/**
+ * Controller de exportação de PPCs para PDF e ODT.
+ * PDF: usa a biblioteca PDFKit para gerar o documento programaticamente
+ *      (posicionando texto, retângulos e tabelas via código).
+ * ODT: monta a estrutura XML do formato OpenDocument manualmente
+ *      e empacota em um ZIP (o formato .odt é essencialmente um ZIP com XMLs).
+ */
 const prisma = require('../config/database');
-const PDFDocument = require('pdfkit');
-const JSZip = require('jszip');
+const PDFDocument = require('pdfkit');  // Biblioteca para geração de PDFs no Node.js
+const JSZip = require('jszip');          // Biblioteca para criar arquivos ZIP (usado no ODT)
 
+// Busca o PPC com todos os dados relacionados (coordenador + componentes)
 async function buscarPpcCompleto(id) {
     return prisma.ppc.findUnique({
         where: { id: Number(id) },
@@ -12,6 +20,7 @@ async function buscarPpcCompleto(id) {
     });
 }
 
+// Gera um nome de arquivo seguro removendo caracteres especiais
 function nomeArquivo(ppc, ext) {
     const nome = (ppc.cursoNome || 'PPC').replace(/[^a-zA-Z0-9À-ú ]/g, '').trim().replace(/ +/g, '_');
     return `PPC_${nome}.${ext}`;
@@ -24,6 +33,12 @@ function val(v) {
 // ==========================================
 // EXPORTAÇÃO PDF
 // ==========================================
+/**
+ * Gera e envia um PDF do PPC para download.
+ * doc.pipe(res) conecta o stream do PDF direto na resposta HTTP,
+ * enviando o arquivo conforme é gerado (sem precisar salvar em disco).
+ * Content-Disposition: attachment força o navegador a baixar em vez de exibir.
+ */
 exports.downloadPdf = async (req, res) => {
     try {
         const ppc = await buscarPpcCompleto(req.params.id);
@@ -32,7 +47,7 @@ exports.downloadPdf = async (req, res) => {
         const doc = new PDFDocument({ margin: 50, size: 'A4' });
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', `attachment; filename="${nomeArquivo(ppc, 'pdf')}"`);
-        doc.pipe(res);
+        doc.pipe(res); // Stream do PDF direto para a resposta HTTP
 
         const AZUL = '#1a5276';
         const CINZA = '#555555';
@@ -221,13 +236,19 @@ exports.downloadPdf = async (req, res) => {
 };
 
 // ==========================================
-// EXPORTAÇÃO ODT
+// EXPORTAÇÃO ODT (OpenDocument Text — formato aberto de documentos)
 // ==========================================
+/**
+ * Gera um arquivo ODT do PPC.
+ * O formato ODT é um ZIP contendo XMLs com o conteúdo, estilos e metadados.
+ * O JSZip monta o ZIP em memória e envia como buffer na resposta.
+ */
 exports.downloadOdt = async (req, res) => {
     try {
         const ppc = await buscarPpcCompleto(req.params.id);
         if (!ppc) return res.status(404).json({ error: 'PPC não encontrado.' });
 
+        // Escapa caracteres especiais do XML para evitar quebra do documento
         function esc(s) {
             return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
