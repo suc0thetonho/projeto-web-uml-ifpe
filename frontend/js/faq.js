@@ -33,11 +33,11 @@ function carregarPerguntas() {
     if (!container) return;
 
     container.innerHTML = perguntasFrequentes.map((item, index) => `
-        <div class="pergunta-item" style="margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+        <div class="pergunta-item" style="margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
             <a href="#" onclick="toggleResposta(${index}); return false;" style="display: block; font-weight: bold;">
                 ❓ ${item.pergunta}
             </a>
-            <div id="resposta-${index}" class="resposta-pergunta" style="display: none; margin-top: 8px; padding-left: 20px; color: #555;">
+            <div id="resposta-${index}" class="resposta-pergunta" style="display: none; margin-top: 8px; padding-left: 20px; color: var(--text-muted);">
                 ${item.resposta}
             </div>
         </div>
@@ -69,11 +69,8 @@ function addFaqStyles() {
             font-size: 13px;
             line-height: 1.4;
         }
-        body.dark-theme .resposta-pergunta {
-            color: #ccc;
-        }
-        body.dark-theme .pergunta-item {
-            border-bottom-color: #0f3460;
+        html.dark-theme .pergunta-item a {
+            color: var(--text);
         }
     `;
     document.head.appendChild(style);
@@ -81,7 +78,7 @@ function addFaqStyles() {
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname.includes('ajuda.html')) {
+    if (window.location.pathname.includes('ajuda')) {
         addFaqStyles();
         carregarPerguntas();
     }

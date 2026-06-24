@@ -30,8 +30,17 @@
     outline: none;
 }
 
-.grupo-campo input::placeholder,
+.grupo-campo input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
 .grupo-campo select {
+    color: #333;
+    font-style: normal;
+}
+
+.grupo-campo select option[value=""] {
     color: #aaa;
     font-style: italic;
 }
@@ -85,4 +94,44 @@
     color: white;
     font-weight: 700;
     cursor: pointer;
+}
+
+html.dark-theme .grupo-campo label {
+    color: var(--text);
+}
+
+html.dark-theme .grupo-campo input,
+html.dark-theme .grupo-campo select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text);
+    color-scheme: dark;
+}
+
+html.dark-theme .grupo-campo input::placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+html.dark-theme .grupo-campo input:focus,
+html.dark-theme .grupo-campo select:focus {
+    background-color: var(--input-bg);
+    border-color: #369831;
+}
+
+html.dark-theme .botao-cancelar,
+html.dark-theme .botao-rascunho {
+    background-color: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.campo-invalido {
+    border-color: #e53935 !important;
+    background-color: #fff5f5 !important;
+}
+
+html.dark-theme .campo-invalido {
+    border-color: #e57373 !important;
+    background-color: #2a1212 !important;
 }

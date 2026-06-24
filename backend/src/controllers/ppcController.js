@@ -1,11 +1,22 @@
-// src/controllers/ppcController.js
+/**
+ * Controller de PPCs (Projetos Pedagógicos de Curso).
+ * Implementa o CRUD completo: Criar, Listar, Buscar por ID, Atualizar e Deletar.
+ * Cada PPC contém dados de 3 etapas: Campus, Curso e Oferta/Indicadores.
+ */
 const prisma = require('../config/database');
 
-// 1. Criar um novo PPC (RF13 / RF14 / RF15)
+/**
+ * Criar um novo PPC.
+ * Recebe todos os campos das 3 etapas em uma única requisição.
+ * Campos numéricos são convertidos com Number() pois o frontend
+ * envia tudo como string via JSON.
+ */
 exports.criarPpc = async (req, res) => {
     try {
+        // Desestruturação de todos os campos organizados por etapa
         const {
             usuarioId,
+            status,
             // ETAPA 1: Dados do Campus
             campusNome, campusCidade, campusCnpj, campusCep, campusBairro,
             campusRua, campusNumero, campusTelefoneFax, campusEmail, campusAtoLegal, campusSite,
@@ -44,7 +55,8 @@ exports.criarPpc = async (req, res) => {
                 ofertaVagasSemestre: Number(ofertaVagasSemestre),
                 ofertaDuracao: Number(ofertaDuracao),
                 indicadorCC, indicadorCPC, indicadorEnade, indicadorIGC,
-                cursoSituacao, cursoStatus
+                cursoSituacao, cursoStatus,
+                status
             }
         });
 
@@ -54,21 +66,26 @@ exports.criarPpc = async (req, res) => {
     }
 };
 
-// 2. Listar todos os PPCs (Com paginação simples ou busca por nome - RF26)
+/**
+ * Listar todos os PPCs, com busca opcional por nome do curso.
+ * req.query.nome vem da URL: GET /api/ppcs?nome=informatica
+ * "contains" + "insensitive" faz busca parcial case-insensitive no PostgreSQL.
+ * "include" traz dados de tabelas relacionadas (JOIN automático do Prisma).
+ */
 exports.listarPpcs = async (req, res) => {
     try {
-        const { nome } = req.query; // Para o filtro de busca RF26
+        const { nome } = req.query;
 
         const ppcs = await prisma.ppc.findMany({
             where: nome ? {
                 cursoNome: {
-                    contains: nome,
-                    mode: 'insensitive' // Busca sem diferenciar maiúsculas/minúsculas
+                    contains: nome,        // Busca parcial: "info" encontra "Informática"
+                    mode: 'insensitive'    // Ignora maiúsculas/minúsculas
                 }
-            } : {},
+            } : {},  // Se não há filtro, retorna todos
             include: {
-                usuario: { // Traz os dados resumidos do coordenador criador
-                    select: { nome: true, email: true }
+                usuario: {
+                    select: { nome: true, email: true } // Traz só nome e email do coordenador
                 }
             }
         });
@@ -79,16 +96,21 @@ exports.listarPpcs = async (req, res) => {
     }
 };
 
-// 3. Buscar um PPC específico com toda a sua matriz curricular (Componentes)
+/**
+ * Buscar um PPC específico pelo ID (vem da URL: GET /api/ppcs/:id).
+ * req.params.id captura o valor dinâmico da URL.
+ * "include: { componentes: true }" faz o Prisma trazer todas as disciplinas
+ * vinculadas ao PPC automaticamente (equivalente a um JOIN no SQL).
+ */
 exports.buscarPpcPorId = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id } = req.params; // :id da URL
 
         const ppc = await prisma.ppc.findUnique({
             where: { id: Number(id) },
             include: {
                 usuario: { select: { nome: true, email: true } },
-                componentes: true // Já traz todas as disciplinas vinculadas automaticamente!
+                componentes: true // Traz todas as disciplinas vinculadas (relação 1:N)
             }
         });
 
@@ -102,16 +124,25 @@ exports.buscarPpcPorId = async (req, res) => {
     }
 };
 
-// 4. Atualizar os dados de um PPC (RF32 - Mudar status ou corrigir dados)
+/**
+ * Atualizar dados de um PPC existente.
+ * Aceita atualização parcial: o frontend pode enviar apenas os campos alterados.
+ * Campos numéricos são convertidos de string para Number antes de salvar,
+ * pois o Prisma exige o tipo correto (Int no schema).
+ */
 exports.atualizarPpc = async (req, res) => {
     try {
         const { id } = req.params;
         const dadosAtualizados = req.body;
 
-        // Converte campos numéricos caso venham no body de atualização
-        if (dadosAtualizados.cursoSemanasLetivas) dadosAtualizados.cursoSemanasLetivas = Number(dadosAtualizados.cursoSemanasLetivas);
-        if (dadosAtualizados.cursoAtivComplem) dadosAtualizados.cursoAtivComplem = Number(dadosAtualizados.cursoAtivComplem);
-        if (dadosAtualizados.ofertaNumTurmas) dadosAtualizados.ofertaNumTurmas = Number(dadosAtualizados.ofertaNumTurmas);
+        // Converte campos que são Int no schema mas chegam como string do frontend
+        const camposNumericos = [
+            'cursoSemanasLetivas', 'cursoAtivComplem', 'cursoIntegMinima', 'cursoIntegMaxima',
+            'ofertaNumTurmas', 'ofertaVagasTurma', 'ofertaVagasTurno', 'ofertaVagasSemestre', 'ofertaDuracao'
+        ];
+        camposNumericos.forEach(campo => {
+            if (dadosAtualizados[campo] !== undefined) dadosAtualizados[campo] = Number(dadosAtualizados[campo]);
+        });
 
         const ppcAtualizado = await prisma.ppc.update({
             where: { id: Number(id) },
@@ -124,7 +155,8 @@ exports.atualizarPpc = async (req, res) => {
     }
 };
 
-// 5. Deletar um PPC (Irá deletar os componentes filhos em cascata conforme configurado no Schema)
+// Deletar um PPC. Os componentes curriculares vinculados são deletados
+// automaticamente em cascata (onDelete: Cascade configurado no schema.prisma).
 exports.deletarPpc = async (req, res) => {
     try {
         const { id } = req.params;

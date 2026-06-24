@@ -78,7 +78,7 @@
 }
 
 .tabela-componentes th {
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
     color: #111;
     text-align: center;
@@ -104,4 +104,29 @@
 
 .botao-gerar:hover {
     background-color: #247c24;
+}
+
+html.dark-theme .conteudo-novo-ppc {
+    background-color: var(--surface);
+}
+
+html.dark-theme .cabecalho-novo-ppc h1,
+html.dark-theme .cabecalho-novo-ppc p {
+    color: var(--text);
+}
+
+html.dark-theme .tabela-componentes {
+    background-color: var(--surface);
+}
+
+html.dark-theme .tabela-componentes thead {
+    background-color: var(--border);
+}
+
+html.dark-theme .tabela-componentes th {
+    color: var(--text);
+}
+
+html.dark-theme .tabela-componentes td {
+    background-color: var(--surface);
 }

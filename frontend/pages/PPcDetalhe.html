@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do PPC - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ppc-detalhe.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="../js/theme.js"></script>
+</head>
+
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+
+        <div class="topo-direita">
+            <img src="../assets/moon.png" alt="" aria-hidden="true" class="icone-tema icone-lua">
+            <label class="switch-tema" title="Alternar tema">
+                <input type="checkbox" id="toggle-tema" class="switch-input">
+                <span class="switch-trilho">
+                    <span class="switch-bolinha"></span>
+                </span>
+            </label>
+            <img src="../assets/sun.png" alt="" aria-hidden="true" class="icone-tema icone-sol">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/NovoPPc" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcCad" class="item-menu ativo">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/PPcAndamento" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+
+                <a href="/frontend/pages/ajuda" class="item-menu">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo ppc-detalhe-page">
+
+            <div class="breadcrumb">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <a href="/frontend/pages/PPcCad">PPCs cadastrados</a>
+                <span>›</span>
+                <span id="breadcrumb-nome">Detalhes do PPC</span>
+            </div>
+
+            <div class="detalhe-acoes">
+                <a class="btn-voltar" href="/frontend/pages/PPcCad">← Voltar</a>
+                <a id="btn-pdf" class="btn-download btn-download-pdf" href="#" target="_blank">Baixar PDF</a>
+                <a id="btn-odt" class="btn-download btn-download-odt" href="#" target="_blank">Baixar ODT</a>
+            </div>
+
+            <div id="conteudo-ppc">
+                <p style="text-align:center; padding: 3rem; color:#888;">Carregando dados do PPC...</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ppc-detalhe.js"></script>
+</body>
+
+</html>

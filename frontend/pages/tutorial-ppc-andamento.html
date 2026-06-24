@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Como acessar um PPC em andamento - xPPC</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/ajuda.css">
+    <link rel="stylesheet" href="../css/tutorial.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+
+    <header class="topo">
+        <div class="topo-esquerda">
+            <img src="../assets/ifpe.png" alt="IFPE" class="logo-ifpe">
+            <div class="linha-vertical"></div>
+            <h1>Sistema de Criação e Automatização de PPC</h1>
+        </div>
+        <div class="topo-direita">
+            <img src="../assets/moon.png" alt="" aria-hidden="true" class="icone-tema icone-lua">
+            <label class="switch-tema" title="Alternar tema">
+                <input type="checkbox" id="toggle-tema" class="switch-input">
+                <span class="switch-trilho">
+                    <span class="switch-bolinha"></span>
+                </span>
+            </label>
+            <img src="../assets/sun.png" alt="" aria-hidden="true" class="icone-tema icone-sol">
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="menu-lateral">
+            <nav>
+                <a href="/frontend/pages/paginaInicial.html" class="item-menu">
+                    <span>Página Inicial</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/NovoPPc.html?novo=1" class="item-menu">
+                    <span>Novo PPC</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcCad.html" class="item-menu">
+                    <span>PPCs cadastrados</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/PPcAndamento.html" class="item-menu">
+                    <span>PPCs em andamento</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+                <a href="/frontend/pages/ajuda.html" class="item-menu ativo">
+                    <span>Ajuda</span>
+                    <img src="../assets/arrow.png" alt="">
+                </a>
+            </nav>
+        </aside>
+
+        <main class="conteudo tutorial-page">
+
+            <div class="breadcrumb">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>›</span>
+                <span>Página inicial</span>
+                <span>›</span>
+                <a href="/frontend/pages/ajuda.html">Ajuda</a>
+                <span>›</span>
+                <span>Como acessar um PPC em andamento</span>
+            </div>
+
+            <a href="/frontend/pages/ajuda.html" class="botao-voltar-tutorial">← Voltar para Ajuda</a>
+
+            <div class="cabecalho-tutorial">
+                <h2>Como acessar um PPC em andamento</h2>
+                <p>PPCs em andamento são rascunhos salvos que ainda não foram finalizados. Você pode retomá-los a qualquer momento de onde parou.</p>
+            </div>
+
+            <div class="caixa-dica">
+                <strong>O que é um PPC em andamento?</strong> Sempre que você clica em <strong>Salvar rascunho</strong> durante a criação de um PPC (disponível a partir da etapa 2), o sistema salva o progresso e o PPC aparece na lista de <strong>PPCs em andamento</strong> com o status <em>andamento</em>.
+            </div>
+
+            <div class="lista-passos">
+
+                <div class="passo">
+                    <div class="numero-passo">1</div>
+                    <div class="conteudo-passo">
+                        <h3>Abra "PPCs em andamento" no menu lateral</h3>
+                        <p>Clique em <span class="destaque-acao">PPCs em andamento</span> no menu à esquerda. O sistema carregará a lista com todos os PPCs que foram salvos como rascunho e ainda não foram concluídos.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">2</div>
+                    <div class="conteudo-passo">
+                        <h3>Localize o PPC que deseja continuar</h3>
+                        <p>A lista exibe o nome do curso, campus, data de criação e status de cada PPC em andamento. Use a barra de busca no topo para filtrar por nome do curso ou campus, caso haja muitos registros.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">3</div>
+                    <div class="conteudo-passo">
+                        <h3>Clique no nome do PPC para retomar o preenchimento</h3>
+                        <p>Clique no <strong>nome do curso</strong> na primeira coluna da tabela. O sistema abrirá a tela de criação de PPC com todos os dados que já foram preenchidos, prontos para edição. Você pode corrigir qualquer campo das etapas anteriores ou continuar de onde parou.</p>
+                        <p style="margin-top: 8px;"><span class="destaque-aviso">Atenção:</span> o formulário será aberto na etapa 1 (Dados do Campus), mas todas as etapas já terão os dados salvos. Você pode navegar até a etapa desejada clicando em <strong>Próximo</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">4</div>
+                    <div class="conteudo-passo">
+                        <h3>Continue editando e salve novamente se necessário</h3>
+                        <p>Após fazer as alterações desejadas, você pode:</p>
+                        <ul>
+                            <li>Clicar em <span class="destaque-aviso">Salvar rascunho</span> novamente para atualizar o rascunho e deixar o PPC em andamento</li>
+                            <li>Continuar até a etapa 4 e clicar em <span class="destaque-sucesso">Gerar Documento</span> para finalizar o PPC</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">5</div>
+                    <div class="conteudo-passo">
+                        <h3>Apagar um PPC em andamento (opcional)</h3>
+                        <p>Se você não precisar mais de um rascunho, pode excluí-lo diretamente da lista. Na coluna <strong>Ação</strong>, clique no botão <span class="destaque-acao">🗑 Apagar</span> ao lado do PPC desejado. Uma confirmação será solicitada antes da exclusão permanente.</p>
+                        <p style="margin-top: 8px;"><span class="destaque-aviso">Atenção:</span> a exclusão é permanente e remove também todos os componentes curriculares que já foram cadastrados para esse PPC.</p>
+                    </div>
+                </div>
+
+                <div class="passo">
+                    <div class="numero-passo">6</div>
+                    <div class="conteudo-passo">
+                        <h3>PPC concluído — vai para PPCs cadastrados</h3>
+                        <p>Ao clicar em <span class="destaque-sucesso">Gerar Documento</span> na etapa de componentes curriculares, o PPC é finalizado e transferido automaticamente para a lista de <strong>PPCs cadastrados</strong>, onde você pode visualizar os detalhes completos ou baixar o PDF.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="caixa-dica">
+                <strong>Dica:</strong> Você pode verificar rapidamente quantos PPCs estão em andamento na <strong>Página Inicial</strong>, que exibe o contador de PPCs em andamento e concluídos no painel de resumo.
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+</body>
+</html>

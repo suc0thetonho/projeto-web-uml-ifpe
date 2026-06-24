@@ -1,34 +1,31 @@
-// API Client - Comunicação com o backend
+// URL base da API do backend — todas as requisições partem deste endereço
 const API_BASE_URL = 'http://localhost:3000/api';
 
-// Função auxiliar para fazer requisições
+/**
+ * Função central de comunicação com o backend.
+ * Todas as outras funções deste arquivo usam apiRequest internamente.
+ * Ela padroniza: headers, tratamento de erros e formato de retorno.
+ * Retorna sempre um objeto { success: bool, data | error }.
+ */
 async function apiRequest(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
     const defaultOptions = {
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
     };
 
-    // Se tiver token de autenticação (para futuro)
-    const token = localStorage.getItem('authToken');
-    if (token) {
-        defaultOptions.headers['Authorization'] = `Bearer ${token}`;
-    }
-
+    // Mescla as opções padrão com as recebidas (ex: method, body)
+    // O spread (...) garante que headers customizados não sobrescrevam o Content-Type
     const finalOptions = {
         ...defaultOptions,
         ...options,
-        headers: {
-            ...defaultOptions.headers,
-            ...options.headers,
-        },
+        headers: { ...defaultOptions.headers, ...options.headers },
     };
 
     try {
+        // fetch() é a API nativa do navegador para fazer requisições HTTP
         const response = await fetch(url, finalOptions);
 
-        // Se a resposta for 204 (No Content), retorna vazio
+        // 204 = No Content (usado em DELETE) — não tem corpo para parsear
         if (response.status === 204) {
             return { success: true, data: null };
         }
@@ -39,7 +36,13 @@ async function apiRequest(endpoint, options = {}) {
             throw new Error(data.error || data.message || 'Erro na requisição');
         }
 
-        return { success: true, data };
+        // O backend envolve respostas em { success: true, data: {...} }.
+        // Aqui "desempacotamos" para que o chamador receba direto o conteúdo útil.
+        const unwrapped = (data !== null && typeof data === 'object' && !Array.isArray(data) && 'data' in data)
+            ? data.data
+            : data;
+
+        return { success: true, data: unwrapped };
     } catch (error) {
         console.error(`Erro na requisição ${endpoint}:`, error);
         return { success: false, error: error.message };
@@ -47,10 +50,20 @@ async function apiRequest(endpoint, options = {}) {
 }
 
 // ==========================================
-// USUÁRIOS (Coordenadores)
+// AUTH
 // ==========================================
 
-// Cadastrar novo usuário
+async function login(email, senha) {
+    return apiRequest('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, senha }),
+    });
+}
+
+// ==========================================
+// USUÁRIOS
+// ==========================================
+
 async function cadastrarUsuario(dadosUsuario) {
     return apiRequest('/usuarios', {
         method: 'POST',
@@ -58,7 +71,6 @@ async function cadastrarUsuario(dadosUsuario) {
     });
 }
 
-// Listar todos os usuários
 async function listarUsuarios() {
     return apiRequest('/usuarios');
 }
@@ -67,7 +79,6 @@ async function listarUsuarios() {
 // PPCs
 // ==========================================
 
-// Criar novo PPC
 async function criarPpc(dadosPpc) {
     return apiRequest('/ppcs', {
         method: 'POST',
@@ -75,18 +86,15 @@ async function criarPpc(dadosPpc) {
     });
 }
 
-// Listar todos os PPCs (com busca opcional por nome)
 async function listarPpcs(busca = '') {
     const query = busca ? `?nome=${encodeURIComponent(busca)}` : '';
     return apiRequest(`/ppcs${query}`);
 }
 
-// Buscar PPC por ID (com componentes)
 async function buscarPpcPorId(id) {
     return apiRequest(`/ppcs/${id}`);
 }
 
-// Atualizar PPC
 async function atualizarPpc(id, dadosAtualizados) {
     return apiRequest(`/ppcs/${id}`, {
         method: 'PUT',
@@ -94,33 +102,108 @@ async function atualizarPpc(id, dadosAtualizados) {
     });
 }
 
-// Deletar PPC
 async function deletarPpc(id) {
-    return apiRequest(`/ppcs/${id}`, {
-        method: 'DELETE',
+    return apiRequest(`/ppcs/${id}`, { method: 'DELETE' });
+}
+
+// ==========================================
+// COMPONENTES CURRICULARES
+// ==========================================
+
+async function listarComponentes(ppcId) {
+    return apiRequest(`/ppcs/${ppcId}/componentes`);
+}
+
+async function criarComponente(ppcId, dados) {
+    return apiRequest(`/ppcs/${ppcId}/componentes`, {
+        method: 'POST',
+        body: JSON.stringify(dados),
+    });
+}
+
+async function atualizarComponente(ppcId, componenteId, dados) {
+    return apiRequest(`/ppcs/${ppcId}/componentes/${componenteId}`, {
+        method: 'PUT',
+        body: JSON.stringify(dados),
+    });
+}
+
+async function deletarTodosComponentes(ppcId) {
+    return apiRequest(`/ppcs/${ppcId}/componentes`, { method: 'DELETE' });
+}
+
+async function deletarComponente(ppcId, componenteId) {
+    return apiRequest(`/ppcs/${ppcId}/componentes/${componenteId}`, { method: 'DELETE' });
+}
+
+// ==========================================
+// CAMPI
+// ==========================================
+
+async function listarCampi() {
+    return apiRequest('/campi');
+}
+
+async function criarCampus(dados) {
+    return apiRequest('/campi', {
+        method: 'POST',
+        body: JSON.stringify(dados),
     });
 }
 
 // ==========================================
-// FUNÇÕES AUXILIARES PARA PPC
+// SITES
 // ==========================================
 
-// Função para validar se o usuário está logado
-function isLoggedIn() {
-    const usuario = localStorage.getItem('usuario');
-    return !!usuario;
+async function listarSites() {
+    return apiRequest('/sites');
 }
 
-// Função para fazer logout
-function logout() {
+async function criarSite(dados) {
+    return apiRequest('/sites', {
+        method: 'POST',
+        body: JSON.stringify(dados),
+    });
+}
+
+// ==========================================
+// PERIODOS
+// ==========================================
+
+async function listarPeriodos() {
+    return apiRequest('/periodos');
+}
+
+async function criarPeriodo(dados) {
+    return apiRequest('/periodos', {
+        method: 'POST',
+        body: JSON.stringify(dados),
+    });
+}
+
+// ==========================================
+// SESSÃO
+// ==========================================
+
+function getUsuarioLogado() {
+    const dados = localStorage.getItem('usuario');
+    return dados ? JSON.parse(dados) : null;
+}
+
+function getUsuarioId() {
+    return localStorage.getItem('usuarioId');
+}
+
+function encerrarSessao() {
     localStorage.removeItem('usuario');
     localStorage.removeItem('usuarioId');
-    localStorage.removeItem('authToken');
     window.location.href = '/frontend/pages/login.html';
 }
 
-// Exportar funções para uso global (no navegador)
+// Expõe todas as funções da API como window.api para que qualquer outro
+// arquivo JS possa chamá-las (ex: window.api.criarPpc(dados))
 window.api = {
+    login,
     cadastrarUsuario,
     listarUsuarios,
     criarPpc,
@@ -128,6 +211,18 @@ window.api = {
     buscarPpcPorId,
     atualizarPpc,
     deletarPpc,
-    isLoggedIn,
-    logout,
+    listarComponentes,
+    criarComponente,
+    atualizarComponente,
+    deletarTodosComponentes,
+    deletarComponente,
+    listarCampi,
+    criarCampus,
+    listarSites,
+    criarSite,
+    listarPeriodos,
+    criarPeriodo,
+    getUsuarioLogado,
+    getUsuarioId,
+    encerrarSessao,
 };
